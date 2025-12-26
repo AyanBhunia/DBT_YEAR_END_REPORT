@@ -1,0 +1,841 @@
+gemini chat link: https://gemini.google.com/share/fa369ed01f91
+
+i have this type of data of multiple employees in our salesforce.
+
+"Id" "dbt__Date__c" "dbt__Description__c" "dbt__Project__r.Name" "dbt__Activity__c" "dbt__Absence_Category__c"
+
+"a05al00000Hq9ewAAB" "2025-05-13" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000HqXsYAAV" "2025-05-13" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000HtRloAAF" "2025-05-13" "Sourcing" "Recruitment" "Documentation / Review" ""
+
+"a05al00000HtRlpAAF" "2025-05-13" "Meeting" "Recruitment" "Meeting" ""
+
+"a05al00000HtRlqAAF" "2025-05-13" "Sourcing" "Recruitment" "Analysis / Exploration" ""
+
+"a05al00000Hv5FiAAJ" "2025-05-13" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000HwE2PAAV" "2025-05-13" "" "DBT" "Collaboration" ""
+
+"a05al00000HwE5dAAF" "2025-05-13" "I successfully completed sending image-based timesheet PDFs from Google Drive to Google Sheets using Open AI." "Learning" "Analysis / Exploration" ""
+
+"a05al00000HwE7FAAV" "2025-05-13" "" "English" "Meeting" ""
+
+"a05al00000HwFJYAA3" "2025-05-19" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000HwNFOAA3" "2025-05-13" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000HwNSKAA3" "2025-05-13" "" "DBT" "Meeting" ""
+
+"a05al00000HwNSLAA3" "2025-05-13" "" "DBT" "Collaboration" ""
+
+"a05al00000HwNSMAA3" "2025-05-13" "" "English" "Meeting" ""
+
+"a05al00000HwNSNAA3" "2025-05-13" "" "Learning" "Development-Admin" ""
+
+"a05al00000HzYqzAAF" "2025-05-13" "" "DBT" "Meeting" ""
+
+"a05al00000HzYr0AAF" "2025-05-13" "I work on Run weekly to evaluate Accounts based on recent activity, open cases and NPS. Update a custom ""Health Scor"" Field." "Learning" "Analysis / Exploration" ""
+
+"a05al00000HzYr1AAF" "2025-05-13" "" "English" "Meeting" ""
+
+"a05al00000Hzy2JAAR" "2025-05-19" "Sourcing" "Recruitment" "Documentation / Review" ""
+
+"a05al00000Hzy2KAAR" "2025-05-19" "Daily Meeting" "Recruitment" "Meeting" ""
+
+"a05al00000Hzy2LAAR" "2025-05-19" "Sourcing" "Recruitment" "Analysis / Exploration" ""
+
+"a05al00000I0XckAAF" "2025-05-13" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000I0eESAAZ" "2025-05-13" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000I6OgQAAV" "2025-05-19" "•I worked with Ayan and created a new table in Supabase with a European location, pushing all the documents to the table.
+
+     • I modified the AI prompt to get data from internal documents." "AI" "Other" ""
+
+"a05al00000I6SqVAAV" "2025-05-13" "" "DBT" "Meeting" ""
+
+"a05al00000I6SqWAAV" "2025-05-13" "I had a meeting with Ayan and worked on the SAP workflow." "AI" "Other" ""
+
+"a05al00000IDGSnAAP" "2025-05-13" "" "DBT" "Meeting" ""
+
+"a05al00000IDGSoAAP" "2025-05-13" "" "DBT" "Collaboration" ""
+
+"a05al00000IDJk1AAH" "2025-05-13" "I worked on converting a Timesheet pdf to a Google sheet." "Learning" "Analysis / Exploration" ""
+
+"a05al00000IDJk2AAH" "2025-05-13" "I watched few youtube videos shared by Shakti." "English" "Analysis / Exploration" ""
+
+"a05al00000IDOwcAAH" "2025-05-19" "" "DBT" "Meeting" ""
+
+"a05al00000IDOwdAAH" "2025-05-19" "" "DBT" "Collaboration" ""
+
+"a05al00000IDOweAAH" "2025-05-19" "I worked on client work." "Client" "Analysis / Exploration" ""
+
+"a05al00000IDS7NAAX" "2025-05-19" "" "DBT" "Meeting" ""
+
+"a05al00000IDS7OAAX" "2025-05-19" "I worked on when a lead is updated with ""Email Open Rate>70℅ and From Responses >=2"" This flow automatically update a ""VIP"" Checkbox.
+
+. I watched  YouTube video shared by Shakti for the English class." "Learning" "Analysis / Exploration" ""
+
+"a05al00000IDksvAAD" "2025-05-19" "" "DBT" "Meeting" ""
+
+"a05al00000IDkswAAD" "2025-05-19" "" "DBT" "Collaboration" ""
+
+"a05al00000IDksxAAD" "2025-05-19" "" "DBT - Admin" "Other" ""
+
+"a05al00000IFQpVAAX" "2025-05-19" "" "" "Permission"
+
+"a05al00000IFQpWAAX" "2025-05-19" "Worked on creaton of platform, Application objects and creation of fields" "Client" "Development-Admin" ""
+
+"a05al00000IFQpXAAX" "2025-05-19" "" "DBT" "Collaboration" ""
+
+"a05al00000IKiPGAA1" "2025-05-29" "Sourcing" "Recruitment" "Documentation / Review" ""
+
+"a05al00000IKiPHAA1" "2025-05-29" "Daily Meeting" "Recruitment" "Meeting" ""
+
+"a05al00000IKiPIAA1" "2025-05-29" "Sourcing" "Recruitment" "Analysis / Exploration" ""
+
+"a05al00000INsiAAAT" "2025-05-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IOMxxAAH" "2025-05-29" "• I had a meeting with Ayan and tried to make a connection to get the metadata id in the table.
+
+     • I am exploring how to connect different AI agents." "AI" "Other" ""
+
+"a05al00000IR1XXAA1" "2025-05-19" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IRASNAA5" "2025-05-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000ISNs9AAH" "2025-05-19" "" "DBT" "Collaboration" ""
+
+"a05al00000ISNsAAAX" "2025-05-19" "Today, I replaced Google Drive node by Gmail trigger and migrated the workflow from my local n8n instance to the server environment. I will continue exploring and testing the workflow on the server." "Learning" "Analysis / Exploration" ""
+
+"a05al00000ISNybAAH" "2025-05-19" "" "" "Permission"
+
+"a05al00000ISRanAAH" "2025-05-29" "" "DBT" "Collaboration" ""
+
+"a05al00000ISRaoAAH" "2025-05-29" "Today, I’m working on extracting data from one spreadsheet to another using emails." "Learning" "Analysis / Exploration" ""
+
+"a05al00000ISRapAAH" "2025-05-29" "" "English" "Meeting" ""
+
+"a05al00000ISRaqAAH" "2025-05-29" "" "" "Permission"
+
+"a05al00000ITAo5AAH" "2025-05-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000ITCpqAAH" "2025-05-19" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000ITNdCAAX" "2025-05-29" "" "DBT" "Collaboration" ""
+
+"a05al00000ITNdDAAX" "2025-05-29" "I worked on When an opportunity is deleted, this flow creates a new record In a custom ""Opportunity Deletion Log"" Object to track who deleted it when key fields (Amount, Stage, Account).
+
+. I watch YouTube video shared by Shakti." "Learning" "Analysis / Exploration" ""
+
+"a05al00000ITNdEAAX" "2025-05-29" "" "English" "Meeting" ""
+
+"a05al00000IUNBLAA5" "2025-05-19" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IUWwDAAX" "2025-05-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IUzGqAAL" "2025-05-29" "" "DBT" "Meeting" ""
+
+"a05al00000IUzGrAAL" "2025-05-29" "" "DBT" "Collaboration" ""
+
+"a05al00000IUzGsAAL" "2025-05-29" "" "English" "Meeting" ""
+
+"a05al00000IUzGtAAL" "2025-05-29" "" "Learning" "Development-Admin" ""
+
+"a05al00000IZdAbAAL" "2025-05-19" "" "Wine Direct" "Development-Admin" ""
+
+"a05al00000IZe56AAD" "2025-05-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IZk2TAAT" "2025-05-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IZlg1AAD" "2025-05-19" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000Ii0MvAAJ" "2025-05-29" "" "DBT" "Meeting" ""
+
+"a05al00000Ii0MwAAJ" "2025-05-29" "" "DBT" "Collaboration" ""
+
+"a05al00000Ii0MxAAJ" "2025-05-29" "" "English" "Meeting" ""
+
+"a05al00000Ii0MyAAJ" "2025-05-29" "I worked on client work." "Client" "Meeting" ""
+
+"a05al00000IpooQAAR" "2025-06-10" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IvPKIAA3" "2025-06-10" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IvWs4AAF" "2025-06-10" "Sourcing" "Recruitment" "Documentation / Review" ""
+
+"a05al00000IvWs5AAF" "2025-06-10" "Meeting" "Recruitment" "Meeting" ""
+
+"a05al00000IvWs6AAF" "2025-06-10" "Sourcing" "Recruitment" "Analysis / Exploration" ""
+
+"a05al00000IvdS6AAJ" "2025-06-10" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IvdVKAAZ" "2025-06-10" "I worked on Support reps use a screen flow to handle customer complaints by walking through issue type, severity, suggested resolutions, and creating a Case or Escalation." "Learning" "Analysis / Exploration" ""
+
+"a05al00000IvdVLAAZ" "2025-06-10" "" "English" "Meeting" ""
+
+"a05al00000IvdgbAAB" "2025-06-10" "" "DBT" "Collaboration" ""
+
+"a05al00000IwnULAAZ" "2025-06-20" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000Iwu5uAAB" "2025-06-10" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000IyQ6xAAF" "2025-06-10" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000J6kRqAAJ" "2025-06-10" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000J6koTAAR" "2025-06-20" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JACgHAAX" "2025-06-10" "" "AI" "Meeting" ""
+
+"a05al00000JACgIAAX" "2025-06-10" "• I worked with Ayan on moving every change from testing to production for Nosta AI.
+
+     • I started to work on scraping the website and generating images based on website information." "AI" "Other" ""
+
+"a05al00000JAGgbAAH" "2025-06-20" "" "AI" "Meeting" ""
+
+"a05al00000JAGgcAAH" "2025-06-20" "• I worked with Ayan on uploading a new document into supabase and retrieved it which Sebastian gave yesterday.
+
+     • I worked on adding suitable images to the webpage i created." "AI" "Other" ""
+
+"a05al00000JDKUHAA5" "2025-06-20" "" "DBT" "Collaboration" ""
+
+"a05al00000JDKUIAA5" "2025-06-20" "I will continue to work on Apex modules and watched YouTube videos shared by Shakti." "Learning" "Development-Coding" ""
+
+"a05al00000JDcj5AAD" "2025-06-20" "" "DBT" "Meeting" ""
+
+"a05al00000JDcj6AAD" "2025-06-20" "" "DBT" "Collaboration" ""
+
+"a05al00000JDcj7AAD" "2025-06-20" "" "DBT - Admin" "Other" ""
+
+"a05al00000JDd0gAAD" "2025-06-10" "" "DBT" "Meeting" ""
+
+"a05al00000JDd0hAAD" "2025-06-10" "" "DBT" "Collaboration" ""
+
+"a05al00000JDd0iAAD" "2025-06-10" "I worked on the screen flow and I learned how to develop an Apex class." "DBT" "Analysis / Exploration" ""
+
+"a05al00000JDd0jAAD" "2025-06-10" "" "English" "Meeting" ""
+
+"a05al00000JDdNHAA1" "2025-06-10" "" "DBT" "Meeting" ""
+
+"a05al00000JDdNIAA1" "2025-06-10" "" "DBT" "Collaboration" ""
+
+"a05al00000JDdNJAA1" "2025-06-10" "" "English" "Meeting" ""
+
+"a05al00000JDdNKAA1" "2025-06-10" "" "DBT - Admin" "Other" ""
+
+"a05al00000JE695AAD" "2025-06-20" "Involved in the Application usage process and got some understanding of the clouds which we are using on and also got some hands on experience as well" "Dbt - Timesheet" "Meeting" ""
+
+"a05al00000JEWEuAAP" "2025-06-20" "" "Dbt - Timesheet" "Development-Admin" ""
+
+"a05al00000JFKEqAAP" "2025-06-20" "" "Dbt - Timesheet" "Development-Coding" ""
+
+"a05al00000JFKJkAAP" "2025-06-20" "" "Dbt - Timesheet" "Mentoring / Training" ""
+
+"a05al00000JFQtnAAH" "2025-06-20" "" "Dbt - Timesheet" "Development-Coding" ""
+
+"a05al00000JNk2TAAT" "2025-06-20" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JOdlFAAT" "2025-06-20" "" "DBT" "Meeting" ""
+
+"a05al00000JOdlGAAT" "2025-06-20" "" "DBT" "Collaboration" ""
+
+"a05al00000JOdlHAAT" "2025-06-20" "I worked on Timesheet issue and I created few users in PDO3." "DBT" "Analysis / Exploration" ""
+
+"a05al00000JQFdFAAX" "2025-06-20" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JRMO9AAP" "2025-06-20" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JRXHwAAP" "2025-06-20" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JUXutAAH" "2025-06-10" "" "Dbt - Timesheet" "Development-Coding" ""
+
+"a05al00000JWhyAAAT" "2025-06-10" "" "Dbt - Timesheet" "Mentoring / Training" ""
+
+"a05al00000JbCC9AAN" "2025-06-10" "" "DBT" "Collaboration" ""
+
+"a05al00000JbCCAAA3" "2025-06-10" "If no such file is found, a new Google Sheet is created with the name format:
+
+  EmployeeName_WeekStartDate_to_WeekStartDate+14days." "AI" "Analysis / Exploration" ""
+
+"a05al00000JbCCBAA3" "2025-06-10" "" "English" "Meeting" ""
+
+"a05al00000JbCCCAA3" "2025-06-10" "" "" "Permission"
+
+"a05al00000JbCqTAAV" "2025-06-20" "" "DBT" "Collaboration" ""
+
+"a05al00000JbCqUAAV" "2025-06-20" "I will be working on creating a separate workflow to extract data into monthly invoice sheets." "AI" "Analysis / Exploration" ""
+
+"a05al00000JbCqVAAV" "2025-06-20" "" "AI" "Meeting" ""
+
+"a05al00000JbCqWAAV" "2025-06-20" "" "" "Permission"
+
+"a05al00000Ji80YAAR" "2025-07-29" "" "Dbt - Timesheet" "Development-Coding" ""
+
+"a05al00000JkMH8AAN" "2025-07-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JkMlmAAF" "2025-07-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JkkhfAAB" "2025-07-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JkpZIAAZ" "2025-07-29" "" "DBT" "Meeting" ""
+
+"a05al00000JkpZJAAZ" "2025-07-29" "" "DBT" "Collaboration" ""
+
+"a05al00000JkpZKAAZ" "2025-07-29" "" "English" "Meeting" ""
+
+"a05al00000JkpZLAAZ" "2025-07-29" "" "DBT - Admin" "Other" ""
+
+"a05al00000Jl7ccAAB" "2025-07-29" "Collaboration & Documentation – Jira & Confluence:
+
+Participated in sprint planning, backlog grooming, and daily standups with the Scrum team.
+
+Updated Jira tickets and documented flow designs, data models, and component behavior in Confluence." "Dbt - Timesheet" "Documentation / Review" ""
+
+"a05al00000JlO2NAAV" "2025-07-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JlOK7AAN" "2025-07-29" "" "Wine Direct" "Development-Coding" ""
+
+"a05al00000JoTn6AAF" "2025-07-29" "" "DBT" "Meeting" ""
+
+"a05al00000JoTn7AAF" "2025-07-29" "" "DBT" "Collaboration" ""
+
+"a05al00000JoTn8AAF" "2025-07-29" "I worked on the Simple Timesheet requirements." "DBT" "Analysis / Exploration" ""
+
+"a05al00000Jq7vMAAR" "2025-07-29" "" "DBT" "Collaboration" ""
+
+"a05al00000Jq7vNAAR" "2025-07-29" "Above the requirement I tested with sowjanya and moved to server." "AI" "Analysis / Exploration" ""
+
+"a05al00000Jq7vOAAR" "2025-07-29" "" "English" "Meeting" ""
+
+"a05al00000Jq7vPAAR" "2025-07-29" "" "" "Permission"
+
+"a05al00000JsRrXAAV" "2025-07-29" "" "AI" "Meeting" ""
+
+"a05al00000JsRrYAAV" "2025-07-29" "• I worked on connecting the SharePoint lists to n8n using http requests.
+
+     • I worked with Ayan to set up scheduled triggers for auto-updating or deleting images in Supabase." "AI" "Other" ""
+
+"a05al00000KELHBAA5" "2025-07-29" "" "DBT" "Collaboration" ""
+
+"a05al00000KELHCAA5" "2025-07-29" "I worked on creating an Apex class to print the squares of all integers from 1 to 10 (e.g., 2×2, 3×3, 4×4, etc.), and I also developed an Apex class to calculate the GPA for a 7th-grade student." "Learning" "Development-Coding" ""
+
+"a05al00000OQf9mAAD" "2025-07-29" "Implemented a distinct “Timesheet Entry” component for employees to enter weekly hours." "Dbt - Timesheet" "Development-Admin" ""
+
+"a05al00000OQtr4AAD" "2025-07-29" "" "Dbt - Timesheet" "Development-Coding" ""
+
+"a05al00000OQtr9AAD" "2025-07-29" "" "" "Permission"
+
+"a05al00000OfraUAAR" "2025-06-10" "" "DBT" "Meeting" ""
+
+"a05al00000OfraVAAR" "2025-06-10" "" "DBT" "Development-Coding" ""
+
+"a05al00000OfraWAAR" "2025-06-10" "" "NOSTA" "Meeting" ""
+
+"a05al00000OfraXAAR" "2025-06-10" "Moved workflows from test to prod" "NOSTA" "Development-Coding" ""
+
+"a05al00000Og8l9AAB" "2025-05-29" "" "DBT" "Meeting" ""
+
+"a05al00000Og8lAAAR" "2025-05-29" "" "DBT" "Development-Coding" ""
+
+"a05al00000Og8lBAAR" "2025-05-29" "" "NOSTA" "Meeting" ""
+
+"a05al00000Og8lCAAR" "2025-05-29" "Worked on Nosta Ai agent to get Metadata" "NOSTA" "Development-Coding" ""
+
+"a05al00000OgA21AAF" "2025-05-13" "" "DBT" "Meeting" ""
+
+"a05al00000OgA22AAF" "2025-05-13" "" "DBT" "Development-Coding" ""
+
+"a05al00000OgA23AAF" "2025-05-13" "" "NOSTA" "Meeting" ""
+
+"a05al00000OgA24AAF" "2025-05-13" "Worked on Nosta Sap Workflow" "NOSTA" "Development-Coding" ""
+
+"a05al00000OgAGTAA3" "2025-05-19" "" "DBT" "Meeting" ""
+
+"a05al00000OgAGUAA3" "2025-05-19" "" "DBT" "Development-Coding" ""
+
+"a05al00000OgAGVAA3" "2025-05-19" "" "NOSTA" "Meeting" ""
+
+"a05al00000OgAGWAA3" "2025-05-19" "Worked on Nosta Supabase table structure" "NOSTA" "Development-Coding" ""
+
+"a05al00000OgALZAA3" "2025-06-20" "" "DBT" "Meeting" ""
+
+"a05al00000OgALaAAN" "2025-06-20" "" "DBT" "Development-Coding" ""
+
+"a05al00000OgALbAAN" "2025-06-20" "" "NOSTA" "Meeting" ""
+
+"a05al00000OgALcAAN" "2025-06-20" "Upload new docs in supabase" "NOSTA" "Development-Coding" ""
+
+"a05al00000OgAV3AAN" "2025-07-29" "" "DBT" "Meeting" ""
+
+"a05al00000OgAV4AAN" "2025-07-29" "" "DBT" "Development-Coding" ""
+
+"a05al00000OgAV5AAN" "2025-07-29" "" "NOSTA" "Meeting" ""
+
+"a05al00000OgAV6AAN" "2025-07-29" "Auto update of images in supabase." "NOSTA" "Development-Coding" ""
+
+using this kind of data over whole year. I want to create year end revisit for each employee. Like most other company give us year end fun review with different stats and Callender views. Give me some fun interactive ideas . Also create a dummy multi page html to show those ideas in action.
+
+This is a great idea. Transforming dry Salesforce timesheet data into a "Spotify Wrapped" style experience boosts employee morale and makes administrative data feel personal and rewarding.
+
+Here are 5 Fun Interactive Ideas based on your specific dataset columns, followed by a fully functional HTML/JS prototype.
+
+The Concept Ideas
+"Your RPG Character Class":
+
+Logic: Analyze dbt__Activity__c.
+
+Idea: If >50% is "Development-Coding", they are a "Code Wizard". If "Meeting" > 40%, they are a "Grand Strategist". If "Learning" is high, they are a "Scroll Hunter".
+
+Visual: Show an 8-bit character card with stats (Strength = Coding hours, Charisma = Meeting hours).
+
+"The Quest Log" (Project Breakdown):
+
+Logic: Group by dbt__Project__r.Name.
+
+Idea: Treat projects as "Kingdoms" or "Planets". "You spent 40% of your year defending the Kingdom of Wine Direct."
+
+Visual: A map where the size of the territory corresponds to hours logged.
+
+"Your Sidekick" (Collaborator Detection):
+
+Logic: Scan dbt__Description__c for proper names (e.g., "Ayan", "Shakti", "Sowjanya" – names visible in your data).
+
+Idea: "It’s dangerous to go alone! You teamed up with Ayan 14 times this year."
+
+Visual: A dynamic duo avatar image.
+
+"The Tech Tree" (Keyword Cloud):
+
+Logic: Scan dbt__Description__c for keywords (Apex, Flow, Supabase, n8n, Python).
+
+Idea: "You unlocked new technologies!" List the tools they mentioned most.
+
+Visual: A constellation connecting related tech terms.
+
+"The Time Traveler" (Calendar Heatmap):
+
+Logic: Use dbt__Date__c.
+
+Idea: "Your most productive day was May 19th." or "You love Tuesdays."
+
+Visual: A calendar view showing "streaks" of high activity (green squares like GitHub).
+
+The Prototype (Interactive HTML)
+Below is a single-file HTML solution. It contains the data you provided (parsed into JSON), logic to calculate the stats, and a "Slide Deck" interface.
+
+How to use: Save the code below as an .html file (e.g., year-in-review.html) and open it in any browser.
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025: The Year in Code</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-color: #1e1e1e;
+            --accent: #bb86fc;
+            --secondary: #03dac6;
+            --text: #ffffff;
+            --font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text);
+            font-family: var(--font);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container imitating a mobile app screen */
+        .app-container {
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            max-height: 800px;
+            background-color: var(--card-color);
+            position: relative;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        @media(min-width: 450px) {
+            .app-container {
+                height: 80vh;
+                border-radius: 20px;
+            }
+        }
+
+        /* Slides */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            visibility: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        /* Typography */
+        h1 { font-size: 2.5rem; margin-bottom: 10px; line-height: 1.1; background: -webkit-linear-gradient(45deg, var(--accent), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 1.8rem; color: var(--secondary); margin-bottom: 20px; }
+        p { font-size: 1.1rem; line-height: 1.6; color: #ccc; }
+        .big-stat { font-size: 4rem; font-weight: bold; color: var(--text); margin: 20px 0; }
+        .stat-label { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); }
+
+        /* Bars and Charts */
+        .bar-chart { width: 100%; margin-top: 20px; text-align: left; }
+        .bar-row { margin-bottom: 15px; }
+        .bar-label { font-size: 0.9rem; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        .bar-bg { width: 100%; height: 10px; background: #333; border-radius: 5px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--secondary); width: 0%; transition: width 1s ease 0.5s; }
+
+        /* Navigation */
+        .nav-dots {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        .dot { width: 10px; height: 10px; background: #444; border-radius: 50%; cursor: pointer; }
+        .dot.active { background: var(--accent); }
+
+        .btn-next {
+            position: absolute;
+            bottom: 80px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(187, 134, 252, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-next:active { transform: scale(0.95); }
+
+        /* Decor */
+        .floating-icon { font-size: 3rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        
+        .tag-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .tag { background: #333; color: var(--secondary); padding: 5px 15px; border-radius: 15px; font-size: 0.9rem; }
+
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <div class="slide active" id="slide-1">
+        <div class="floating-icon">🚀</div>
+        <h1>2025 Wrapped</h1>
+        <p>Your Salesforce activity log tells a story.</p>
+        <p>Let's rewind and see what you accomplished this year.</p>
+        <button class="btn-next" onclick="nextSlide()">Let's Go</button>
+    </div>
+
+    <div class="slide" id="slide-2">
+        <div class="floating-icon">⚡</div>
+        <h2>The Hustle</h2>
+        <div class="big-stat" id="total-logs">0</div>
+        <div class="stat-label">Timesheet Entries</div>
+        <p style="margin-top:20px">That's a lot of data logged!</p>
+        <div class="tag-cloud">
+            <span class="tag" id="top-day">Busy Tuesdays</span>
+            <span class="tag" id="active-month">Big May</span>
+        </div>
+    </div>
+
+    <div class="slide" id="slide-3">
+        <h2>Your Kingdoms</h2>
+        <p>Where you spent your mana:</p>
+        <div class="bar-chart" id="project-chart">
+            </div>
+    </div>
+
+    <div class="slide" id="slide-4">
+        <div class="floating-icon" id="rpg-icon">🧙‍♂️</div>
+        <h2 id="rpg-class">The Code Wizard</h2>
+        <p id="rpg-desc">Your activity patterns define your style.</p>
+        <div class="bar-chart" id="activity-chart">
+            </div>
+    </div>
+
+    <div class="slide" id="slide-5">
+        <div class="floating-icon">🤝</div>
+        <h2>Squad & Skills</h2>
+        <p>You mentioned <b>Ayan</b> <span id="ayan-count" style="color:var(--secondary)">0</span> times and <b>Shakti</b> <span id="shakti-count" style="color:var(--secondary)">0</span> times.</p>
+        <hr style="border:0; border-top:1px solid #333; width:50%; margin: 20px auto;">
+        <p>Tech Unlocked:</p>
+        <div class="tag-cloud" id="keyword-cloud">
+            </div>
+    </div>
+
+    <div class="slide" id="slide-6">
+        <h1>You crushed it.</h1>
+        <p>Ready for the next level?</p>
+        <div class="big-stat">2026</div>
+        <div class="stat-label">Awaits</div>
+        <button class="btn-next" onclick="location.reload()">Replay</button>
+    </div>
+
+    <div class="nav-dots" id="dots-container">
+        </div>
+</div>
+
+<script>
+    // 1. DATA INGESTION (Simulated from your CSV provided)
+    const rawData = [
+        { project: "Wine Direct", activity: "Development-Coding", date: "2025-05-13", desc: "" },
+        { project: "Recruitment", activity: "Documentation / Review", date: "2025-05-13", desc: "Sourcing" },
+        { project: "Recruitment", activity: "Meeting", date: "2025-05-13", desc: "Meeting" },
+        { project: "DBT", activity: "Collaboration", date: "2025-05-13", desc: "" },
+        { project: "Learning", activity: "Analysis / Exploration", date: "2025-05-13", desc: "Open AI PDF" },
+        { project: "English", activity: "Meeting", date: "2025-05-13", desc: "" },
+        { project: "Wine Direct", activity: "Development-Coding", date: "2025-05-19", desc: "" },
+        { project: "DBT", activity: "Meeting", date: "2025-05-13", desc: "" },
+        { project: "Learning", activity: "Analysis / Exploration", date: "2025-05-13", desc: "Health Scor Field" },
+        { project: "AI", activity: "Other", date: "2025-05-19", desc: "worked with Ayan Supabase AI prompt" },
+        { project: "AI", activity: "Other", date: "2025-05-13", desc: "meeting with Ayan SAP workflow" },
+        { project: "Client", activity: "Development-Admin", date: "2025-05-19", desc: "creaton of platform" },
+        { project: "Wine Direct", activity: "Development-Coding", date: "2025-05-29", desc: "" },
+        { project: "AI", activity: "Other", date: "2025-05-29", desc: "meeting with Ayan metadata id" },
+        { project: "Learning", activity: "Analysis / Exploration", date: "2025-05-19", desc: "Gmail trigger n8n" },
+        { project: "Dbt - Timesheet", activity: "Meeting", date: "2025-06-20", desc: "Application usage" },
+        { project: "Dbt - Timesheet", activity: "Development-Admin", date: "2025-06-20", desc: "" },
+        { project: "Dbt - Timesheet", activity: "Development-Coding", date: "2025-06-20", desc: "" },
+        { project: "AI", activity: "Meeting", date: "2025-06-10", desc: "worked with Ayan Nosta AI" },
+        { project: "Learning", activity: "Development-Coding", date: "2025-07-29", desc: "Apex class squares videos shared by Shakti" },
+        { project: "Dbt - Timesheet", activity: "Documentation / Review", date: "2025-07-29", desc: "Jira & Confluence" },
+        { project: "NOSTA", activity: "Development-Coding", date: "2025-06-10", desc: "test to prod" },
+        { project: "NOSTA", activity: "Meeting", date: "2025-05-29", desc: "" },
+        { project: "NOSTA", activity: "Development-Coding", date: "2025-07-29", desc: "Auto update images" },
+        // ... (Added sample logic to ensure charts look full based on your data patterns)
+        { project: "Wine Direct", activity: "Development-Coding", date: "2025-06-10", desc: "" },
+        { project: "Wine Direct", activity: "Development-Coding", date: "2025-06-20", desc: "" },
+        { project: "Wine Direct", activity: "Development-Coding", date: "2025-07-29", desc: "" }
+    ];
+
+    // 2. ANALYTICS LOGIC
+    function processData(data) {
+        const stats = {
+            total: data.length,
+            projects: {},
+            activities: {},
+            keywords: [],
+            ayanCount: 0,
+            shaktiCount: 0
+        };
+
+        const techKeywords = ["Supabase", "AI", "SAP", "Apex", "Google Sheet", "n8n", "Jira", "Confluence", "Flow"];
+
+        data.forEach(row => {
+            // Count Projects
+            stats.projects[row.project] = (stats.projects[row.project] || 0) + 1;
+
+            // Count Activities
+            stats.activities[row.activity] = (stats.activities[row.activity] || 0) + 1;
+
+            // Search Description
+            if(row.desc) {
+                const lowerDesc = row.desc.toLowerCase();
+                if(lowerDesc.includes("ayan")) stats.ayanCount++;
+                if(lowerDesc.includes("shakti")) stats.shaktiCount++;
+
+                techKeywords.forEach(tech => {
+                    if(lowerDesc.includes(tech.toLowerCase())) stats.keywords.push(tech);
+                });
+            }
+        });
+
+        // Unique keywords
+        stats.keywords = [...new Set(stats.keywords)];
+
+        return stats;
+    }
+
+    const stats = processData(rawData);
+
+    // 3. UI RENDERING
+
+    // Slide 2: Counts
+    document.getElementById('total-logs').innerText = stats.total;
+
+    // Slide 3: Project Chart
+    const projectContainer = document.getElementById('project-chart');
+    const sortedProjects = Object.entries(stats.projects).sort((a,b) => b[1] - a[1]).slice(0, 4); // Top 4
+    const maxProj = sortedProjects[0][1];
+
+    sortedProjects.forEach(([name, count]) => {
+        const percent = (count / maxProj) * 100;
+        const html = `
+            <div class="bar-row">
+                <div class="bar-label"><span>${name}</span><span>${count}</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width: ${percent}%"></div></div>
+            </div>`;
+        projectContainer.innerHTML += html;
+    });
+
+    // Slide 4: Activity / RPG Class
+    const activityContainer = document.getElementById('activity-chart');
+    const sortedActivity = Object.entries(stats.activities).sort((a,b) => b[1] - a[1]).slice(0, 3);
+    const maxAct = sortedActivity[0][1];
+
+    // Determine RPG Class
+    const topActivity = sortedActivity[0][0];
+    const rpgTitle = document.getElementById('rpg-class');
+    const rpgIcon = document.getElementById('rpg-icon');
+
+    if(topActivity.includes("Coding")) {
+        rpgTitle.innerText = "The Code Wizard";
+        rpgIcon.innerText = "🧙‍♂️";
+    } else if (topActivity.includes("Meeting")) {
+        rpgTitle.innerText = "The Diplomat";
+        rpgIcon.innerText = "🤝";
+    } else if (topActivity.includes("Learning")) {
+        rpgTitle.innerText = "The Scholar";
+        rpgIcon.innerText = "📜";
+    } else {
+        rpgTitle.innerText = "The Adventurer";
+        rpgIcon.innerText = "⚔️";
+    }
+
+    sortedActivity.forEach(([name, count]) => {
+        const percent = (count / maxAct) * 100;
+        const html = `
+            <div class="bar-row">
+                <div class="bar-label"><span>${name}</span><span>${count}</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width: ${percent}%"></div></div>
+            </div>`;
+        activityContainer.innerHTML += html;
+    });
+
+    // Slide 5: Squad & Keywords
+    document.getElementById('ayan-count').innerText = stats.ayanCount;
+    document.getElementById('shakti-count').innerText = stats.shaktiCount;
+
+    const cloudContainer = document.getElementById('keyword-cloud');
+    stats.keywords.forEach(word => {
+        cloudContainer.innerHTML += `<span class="tag">${word}</span>`;
+    });
+
+    // 4. NAVIGATION LOGIC
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots-container');
+
+    // Create Dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if(index === 0) dot.classList.add('active');
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        // Handle Bounds
+        if(index >= slides.length) return;
+
+        // Remove active class from current
+        slides[currentSlide].classList.remove('active');
+        slides[currentSlide].classList.add('prev');
+
+        // Update index
+        currentSlide = index;
+
+        // Add active to new
+        slides[currentSlide].classList.remove('prev');
+        slides[currentSlide].classList.add('active');
+
+        // Update Dots
+        dots.forEach(d => d.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+
+        // Trigger Animations (Reset bars width to 0 then animate)
+        const bars = slides[currentSlide].querySelectorAll('.bar-fill');
+        bars.forEach(bar => {
+            const target = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => { bar.style.width = target; }, 100);
+        });
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    // Allow click on dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            // Simple logic for demo, usually need to handle direction
+            slides.forEach(s => s.classList.remove('active', 'prev'));
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots.forEach(d => d.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        });
+    });
+
+</script>
+
+</body>
+</html>
+How to Implement this in Real Life (Salesforce)
+If you want to move this from a dummy HTML file to your actual Salesforce org:
+
+Visualforce Page: You can paste the code above directly into a Visualforce page.
+
+LWC (Lightning Web Component):
+
+Create a component that uses a wire adapter to fetch the aggregate results using a SOQL query.
+
+Pass that JSON data into the JavaScript logic shown above.
+
+SOQL Queries needed:
+
+SELECT dbt__Project__r.Name, COUNT(Id) FROM [Object] GROUP BY dbt__Project__r.Name
+
+SELECT dbt__Activity__c, COUNT(Id) FROM [Object] GROUP BY dbt__Activity__c
+
+SELECT dbt__Description__c FROM [Object] WHERE dbt__Date__c = THIS_YEAR (for the keyword analysis).

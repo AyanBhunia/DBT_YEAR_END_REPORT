@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025: Year In Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-color: #1a1a1a;
+            --accent: #00ff41; 
+            --secondary: #008f11;
+            --text: #e0e0e0;
+            --font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --gold: #ffd700;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text);
+            font-family: var(--font);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* --- BACKGROUNDS --- */
+        #matrix-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.1; pointer-events: none;}
+        
+        .retro-grid {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.15;
+            background-image: 
+                linear-gradient(var(--secondary) 1px, transparent 1px),
+                linear-gradient(90deg, var(--secondary) 1px, transparent 1px);
+            background-size: 40px 40px;
+            perspective: 500px;
+            transform: rotateX(60deg) scale(2);
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            display: none;
+        }
+        @keyframes gridMove { from { transform: rotateX(60deg) scale(2) translateY(0); } to { transform: rotateX(60deg) scale(2) translateY(40px); } }
+
+        /* --- APP CONTAINER --- */
+        .app-container {
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            max-height: 850px;
+            background-color: var(--card-color);
+            position: relative;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            border: 1px solid #333;
+        }
+
+        @media(min-width: 450px) { .app-container { height: 85vh; border-radius: 20px; } }
+
+        /* --- LOGIN --- */
+        .screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.6s;
+            background: var(--card-color); z-index: 20;
+        }
+        .screen.hidden { transform: translateY(-120%); opacity: 0; pointer-events: none; }
+
+        .login-content { padding: 40px 20px; text-align: center; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
+        .user-list { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex-grow: 1; padding-right: 5px; }
+        .user-list::-webkit-scrollbar { width: 6px; }
+        .user-list::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+        .user-btn {
+            background: linear-gradient(90deg, #222, #2a2a2a);
+            color: white; border: 1px solid #333; padding: 15px; border-radius: 12px;
+            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 15px;
+        }
+        .user-btn:hover { border-color: var(--accent); transform: translateX(5px); box-shadow: 0 0 10px rgba(0,255,65,0.2); }
+        .user-avatar { width: 40px; height: 40px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; }
+
+        /* --- SLIDES --- */
+        .slide-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; display: none; perspective: 1000px; }
+        .slide-container.active { display: block; }
+
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            padding: 40px 20px 80px 20px; box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; opacity: 0; transform: rotateY(90deg); transform-origin: center center;
+            transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            visibility: hidden; background: transparent; backface-visibility: hidden;
+        }
+        .slide.active { opacity: 1; transform: rotateY(0deg); visibility: visible; }
+
+        /* --- TYPOGRAPHY & COMPONENTS --- */
+        h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent); text-shadow: 0 0 10px rgba(0,255,65,0.3); }
+        h2 { font-size: 1.8rem; color: #fff; margin-bottom: 10px; letter-spacing: 1px; }
+        p { font-size: 1.1rem; line-height: 1.6; color: #aaa; margin: 5px 0 15px 0; }
+        
+        .big-stat { font-size: 4rem; font-weight: 800; color: #fff; margin: 10px 0; }
+        .stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); }
+
+        /* RPG Card */
+        .rpg-card { background: rgba(255,255,255,0.05); border: 1px solid #444; padding: 20px; border-radius: 15px; width: 100%; margin-top: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .stat-bar { display: flex; align-items: center; margin-bottom: 10px; font-size: 0.85rem; }
+        .stat-name { width: 90px; text-align: left; font-weight: bold; color: #bbb; }
+        .stat-track { flex-grow: 1; height: 8px; background: #333; border-radius: 4px; margin-left: 10px; overflow: hidden; }
+        .stat-val { height: 100%; background: var(--accent); width: 0%; transition: width 1s ease 0.5s; box-shadow: 0 0 5px var(--accent); }
+
+        /* Tags */
+        .tag-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
+        .tag { background: rgba(0,255,65,0.1); color: var(--accent); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; border: 1px solid rgba(0,255,65,0.2); }
+        
+        /* Dynamic Word Cloud */
+        .word-cloud-box { 
+            position: relative; 
+            width: 100%; 
+            height: 350px; 
+            margin-top: 20px; 
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            gap: 10px;
+        }
+        .word-item { 
+            color: #888; 
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0);
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            line-height: 1;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+        .word-item:hover { color: var(--accent); transform: scale(1.1) !important; text-shadow: 0 0 15px var(--accent); z-index: 10; cursor: default; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Achievements */
+        .badges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; width: 100%; }
+        .badge { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 15px 5px; display: flex; flex-direction: column; align-items: center; border: 1px solid #333; transition: 0.3s; }
+        .badge:hover { border-color: var(--gold); background: rgba(255, 215, 0, 0.1); transform: translateY(-5px); }
+        .badge-icon { font-size: 2rem; margin-bottom: 5px; }
+        .badge-name { font-size: 0.8rem; font-weight: bold; color: #fff; }
+        .badge-desc { font-size: 0.6rem; color: #888; margin-top: 2px; }
+
+        /* Nav */
+        .nav-dots { position: absolute; bottom: 30px; width: 100%; display: flex; justify-content: center; gap: 8px; z-index: 10; }
+        .dot { width: 8px; height: 8px; background: #444; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--accent); transform: scale(1.3); }
+
+        .btn-next {
+            position: absolute; bottom: 70px; background: var(--accent); color: #000; border: none; padding: 15px 50px;
+            border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 0 20px rgba(0,255,65,0.5);
+            transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-next:hover { transform: scale(1.05); }
+        .btn-back { position: absolute; top: 20px; left: 20px; background: transparent; border: none; color: #666; font-size: 1.5rem; cursor: pointer; z-index: 20; }
+        .floating-icon { font-size: 4rem; margin-bottom: 20px; animation: float 4s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+        .chart-wrapper { position: relative; height: 220px; width: 100%; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<canvas id="matrix-canvas"></canvas>
+<div class="retro-grid" id="retro-bg"></div>
+
+<div class="app-container">
+
+    <!-- LOGIN SCREEN -->
+    <div class="screen" id="login-screen">
+        <div class="login-content">
+            <h1>SYSTEM ACCESS</h1>
+            <p>Select User Profile</p>
+            <div class="user-list" id="user-list"></div>
+        </div>
+    </div>
+
+    <!-- SLIDES CONTAINER -->
+    <div class="slide-container" id="slide-container">
+        <button class="btn-back" onclick="resetApp()">&#8592;</button>
+
+        <!-- Slide 1: Intro -->
+        <div class="slide active">
+            <div class="floating-icon">🚀</div>
+            <h1 id="user-name-display">Name</h1>
+            <p>Accessing 2025 Log...</p>
+            <button class="btn-next" onclick="nextSlide()">Initialize</button>
+        </div>
+
+        <!-- Slide 2: Stats -->
+        <div class="slide">
+            <div class="floating-icon">⚡</div>
+            <h2>The Grind</h2>
+            <div class="big-stat" id="total-hours">0</div>
+            <div class="stat-label">Total Hours</div>
+            <div class="chart-wrapper"><canvas id="dayChart"></canvas></div>
+            <p style="font-size:0.8rem; margin-top:10px; color:#666">Activity Heatmap</p>
+        </div>
+
+        <!-- Slide 3: Projects -->
+        <div class="slide">
+            <h2>Kingdoms</h2>
+            <p>Where you ruled:</p>
+            <div class="chart-wrapper"><canvas id="projectChart"></canvas></div>
+        </div>
+
+        <!-- Slide 4: RPG Class -->
+        <div class="slide">
+            <div class="floating-icon" id="rpg-icon">🧙‍♂️</div>
+            <h2 id="rpg-class">Class</h2>
+            <div class="rpg-card" id="rpg-stats-container"></div>
+        </div>
+
+        <!-- Slide 5: Tech & Squad -->
+        <div class="slide">
+            <div class="floating-icon">🤝</div>
+            <h2>Tech & Allies</h2>
+            <p>Top Ally: <b id="top-collab" style="color:var(--accent);">...</b></p>
+            <div class="tag-cloud" id="keyword-cloud"></div>
+        </div>
+
+        <!-- Slide 6: Vocabulary -->
+        <div class="slide">
+            <div class="floating-icon">💬</div>
+            <h2>Vocabulary</h2>
+            <p>Your signature words:</p>
+            <div class="word-cloud-box" id="word-cloud-container"></div>
+        </div>
+
+        <!-- Slide 7: Achievements -->
+        <div class="slide">
+            <div class="floating-icon" style="color: var(--gold)">🏆</div>
+            <h2 style="color: var(--gold)">Trophies</h2>
+            <div class="badges-grid" id="badges-container"></div>
+        </div>
+
+        <!-- Slide 8: Outro -->
+        <div class="slide">
+            <h1>Level Complete</h1>
+            <p>See you in 2026.</p>
+            <button class="btn-next" onclick="resetApp()">Replay</button>
+        </div>
+
+        <div class="nav-dots" id="dots-container"></div>
+    </div>
+</div>
+
+<script>
+    // --- 1. DATA INJECTION ---
+    const users = [
+  {
+    "id": "a01al00000crzp3AAA",
+    "name": "Sowjanya",
+    "totalHours": 1842.9,
+    "projects": {
+      "DBT": 685.9,
+      "DBT - Admin": 660,
+      "Learning": 297,
+      "Internal / Misc": 133,
+      "English": 67
+    },
+    "activities": {
+      "Other": 648,
+      "Meeting": 527.9,
+      "Development-Admin": 287,
+      "Collaboration": 235,
+      "General": 133,
+      "Testing": 12
+    },
+    "keywords": [
+      "Flow"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 366.2,
+      "Tuesday": 363.5,
+      "Wednesday": 361.2,
+      "Thursday": 368.5,
+      "Friday": 367.5,
+      "Saturday": 13,
+      "Sunday": 3
+    },
+    "wordCloud": [
+      {
+        "text": "completed",
+        "size": 10
+      },
+      {
+        "text": "record",
+        "size": 9
+      },
+      {
+        "text": "create",
+        "size": 8
+      },
+      {
+        "text": "created",
+        "size": 7
+      },
+      {
+        "text": "validation",
+        "size": 6
+      },
+      {
+        "text": "name",
+        "size": 6
+      },
+      {
+        "text": "rule",
+        "size": 5
+      },
+      {
+        "text": "picklist",
+        "size": 5
+      },
+      {
+        "text": "field",
+        "size": 5
+      },
+      {
+        "text": "when",
+        "size": 5
+      },
+      {
+        "text": "contact",
+        "size": 5
+      },
+      {
+        "text": "account",
+        "size": 5
+      },
+      {
+        "text": "type",
+        "size": 4
+      },
+      {
+        "text": "case",
+        "size": 4
+      },
+      {
+        "text": "value",
+        "size": 4
+      },
+      {
+        "text": "update",
+        "size": 4
+      },
+      {
+        "text": "another",
+        "size": 3
+      },
+      {
+        "text": "closed",
+        "size": 3
+      },
+      {
+        "text": "won",
+        "size": 3
+      },
+      {
+        "text": "flow",
+        "size": 3
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      }
+    ],
+    "rpg": {
+      "class": "Adventurer",
+      "stats": {
+        "Execution": 5,
+        "Agility": 5,
+        "Innovation": 5,
+        "Strategy": 5,
+        "Collaboration": 5
+      }
+    }
+  },
+  {
+    "id": "a01al00000dBK9qAAG",
+    "name": "Anusha",
+    "totalHours": 2039.4,
+    "projects": {
+      "AI": 1128,
+      "DBT": 275.3,
+      "Internal / Misc": 204,
+      "DBT-Recruitment & BD": 161.6,
+      "Learning": 144,
+      "Dbt - Timesheet": 65,
+      "DBT - AI": 37.5,
+      "NOSTA": 13,
+      "Client": 11
+    },
+    "activities": {
+      "Other": 1154.6,
+      "Meeting": 351,
+      "General": 204,
+      "Analysis / Exploration": 121,
+      "Certification": 80,
+      "Development-Admin": 69.5,
+      "Documentation / Review": 26,
+      "Collaboration": 19.3,
+      "Travel Expense Calculation Agent": 7,
+      "Testing": 5,
+      "Meetings and Planning": 2
+    },
+    "keywords": [
+      "AI",
+      "Flow",
+      "N8n",
+      "Testing",
+      "Supabase",
+      "Nosta",
+      "Azure",
+      "API",
+      "Integration",
+      "Node",
+      "Salesforce",
+      "React",
+      "Git",
+      "HTML",
+      "LWC"
+    ],
+    "collab": "Prameela",
+    "dayStats": {
+      "Monday": 401.3,
+      "Tuesday": 405.8,
+      "Wednesday": 405.1,
+      "Thursday": 411.3,
+      "Friday": 415.9,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "agent",
+        "size": 62
+      },
+      {
+        "text": "dbt",
+        "size": 61
+      },
+      {
+        "text": "n8n",
+        "size": 59
+      },
+      {
+        "text": "started",
+        "size": 54
+      },
+      {
+        "text": "completed",
+        "size": 48
+      },
+      {
+        "text": "flow",
+        "size": 41
+      },
+      {
+        "text": "data",
+        "size": 41
+      },
+      {
+        "text": "workflow",
+        "size": 38
+      },
+      {
+        "text": "meeting",
+        "size": 36
+      },
+      {
+        "text": "few",
+        "size": 36
+      },
+      {
+        "text": "explored",
+        "size": 33
+      },
+      {
+        "text": "created",
+        "size": 31
+      },
+      {
+        "text": "using",
+        "size": 31
+      },
+      {
+        "text": "creating",
+        "size": 30
+      },
+      {
+        "text": "supabase",
+        "size": 30
+      },
+      {
+        "text": "testing",
+        "size": 29
+      },
+      {
+        "text": "tried",
+        "size": 29
+      },
+      {
+        "text": "specialist",
+        "size": 28
+      },
+      {
+        "text": "agentforce",
+        "size": 28
+      },
+      {
+        "text": "about",
+        "size": 26
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Adventurer",
+      "stats": {
+        "Execution": 5,
+        "Agility": 5,
+        "Innovation": 5,
+        "Strategy": 5,
+        "Collaboration": 5
+      }
+    }
+  },
+  {
+    "id": "a01al00000dCxFaAAK",
+    "name": "Prameela",
+    "totalHours": 1864,
+    "projects": {
+      "DBT": 976,
+      "Client": 371,
+      "Learning": 279.5,
+      "Internal / Misc": 117,
+      "English": 73.5,
+      "Dbt - Timesheet": 39,
+      "Java": 8
+    },
+    "activities": {
+      "Analysis / Exploration": 850,
+      "Meeting": 381,
+      "Collaboration": 183,
+      "General": 117,
+      "Certification": 98.5,
+      "Testing": 85.5,
+      "Documentation / Review": 53,
+      "Development-Admin": 48,
+      "Other": 40,
+      "Development-Coding": 8
+    },
+    "keywords": [
+      "Flow",
+      "AI",
+      "Salesforce",
+      "HTML",
+      "LWC",
+      "API",
+      "Apex",
+      "Deploy",
+      "Testing",
+      "Git",
+      "N8n"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 400,
+      "Tuesday": 360,
+      "Wednesday": 384,
+      "Thursday": 360,
+      "Friday": 360,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "explored",
+        "size": 36
+      },
+      {
+        "text": "flow",
+        "size": 36
+      },
+      {
+        "text": "release",
+        "size": 34
+      },
+      {
+        "text": "few",
+        "size": 34
+      },
+      {
+        "text": "timesheet",
+        "size": 32
+      },
+      {
+        "text": "client",
+        "size": 28
+      },
+      {
+        "text": "tested",
+        "size": 23
+      },
+      {
+        "text": "ayan",
+        "size": 23
+      },
+      {
+        "text": "prepared",
+        "size": 22
+      },
+      {
+        "text": "dumps",
+        "size": 22
+      },
+      {
+        "text": "started",
+        "size": 20
+      },
+      {
+        "text": "summer",
+        "size": 20
+      },
+      {
+        "text": "document",
+        "size": 20
+      },
+      {
+        "text": "agentforce",
+        "size": 20
+      },
+      {
+        "text": "specialist",
+        "size": 19
+      },
+      {
+        "text": "created",
+        "size": 19
+      },
+      {
+        "text": "modules",
+        "size": 19
+      },
+      {
+        "text": "youtube",
+        "size": 19
+      },
+      {
+        "text": "package",
+        "size": 19
+      },
+      {
+        "text": "features",
+        "size": 18
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Adventurer",
+      "stats": {
+        "Execution": 5,
+        "Agility": 5,
+        "Innovation": 5,
+        "Strategy": 5,
+        "Collaboration": 5
+      }
+    }
+  },
+  {
+    "id": "a01al00000dWONJAA4",
+    "name": "Rajitha Dodda",
+    "totalHours": 1946,
+    "projects": {
+      "Learning": 1332,
+      "DBT": 290,
+      "Internal / Misc": 273,
+      "English": 51
+    },
+    "activities": {
+      "Development-Coding": 651,
+      "Analysis / Exploration": 613,
+      "General": 273,
+      "Collaboration": 199,
+      "Meeting": 135,
+      "Development-Admin": 75
+    },
+    "keywords": [
+      "Apex",
+      "AI",
+      "Flow",
+      "LWC",
+      "Salesforce",
+      "Integration",
+      "Visualforce",
+      "N8n",
+      "Testing",
+      "Javascript",
+      "Java",
+      "Aura"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 385,
+      "Tuesday": 384,
+      "Wednesday": 392,
+      "Thursday": 392,
+      "Friday": 392,
+      "Saturday": 1,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "completed",
+        "size": 76
+      },
+      {
+        "text": "apex",
+        "size": 75
+      },
+      {
+        "text": "modules",
+        "size": 50
+      },
+      {
+        "text": "opportunity",
+        "size": 34
+      },
+      {
+        "text": "flow",
+        "size": 33
+      },
+      {
+        "text": "agentforce",
+        "size": 32
+      },
+      {
+        "text": "when",
+        "size": 30
+      },
+      {
+        "text": "module",
+        "size": 30
+      },
+      {
+        "text": "class",
+        "size": 27
+      },
+      {
+        "text": "automatically",
+        "size": 24
+      },
+      {
+        "text": "record",
+        "size": 23
+      },
+      {
+        "text": "youtube",
+        "size": 23
+      },
+      {
+        "text": "lwc",
+        "size": 23
+      },
+      {
+        "text": "specialist",
+        "size": 23
+      },
+      {
+        "text": "case",
+        "size": 20
+      },
+      {
+        "text": "watched",
+        "size": 20
+      },
+      {
+        "text": "will",
+        "size": 20
+      },
+      {
+        "text": "email",
+        "size": 18
+      },
+      {
+        "text": "customer",
+        "size": 18
+      },
+      {
+        "text": "shared",
+        "size": 18
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00000dWOaDAAW",
+    "name": "Anantha Rajesh",
+    "totalHours": 2028.5,
+    "projects": {
+      "DBT": 940.5,
+      "Internal / Misc": 395,
+      "Learning": 375,
+      "AI": 233.5,
+      "English": 84.5
+    },
+    "activities": {
+      "Development-Admin": 618,
+      "General": 395,
+      "Analysis / Exploration": 385,
+      "Collaboration": 293,
+      "Meeting": 266.5,
+      "Testing": 29.5,
+      "Certification": 20.5,
+      "Documentation / Review": 15,
+      "Other": 6
+    },
+    "keywords": [
+      "AI",
+      "Flow",
+      "N8n",
+      "Testing",
+      "HTML",
+      "Salesforce",
+      "API",
+      "Node",
+      "Git",
+      "Apex",
+      "LWC",
+      "Deploy"
+    ],
+    "collab": "Sowjanya",
+    "dayStats": {
+      "Monday": 401,
+      "Tuesday": 400,
+      "Wednesday": 408,
+      "Thursday": 409,
+      "Friday": 408,
+      "Saturday": 2.5,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "will",
+        "size": 80
+      },
+      {
+        "text": "timesheet",
+        "size": 54
+      },
+      {
+        "text": "continue",
+        "size": 44
+      },
+      {
+        "text": "app",
+        "size": 36
+      },
+      {
+        "text": "flow",
+        "size": 33
+      },
+      {
+        "text": "n8n",
+        "size": 29
+      },
+      {
+        "text": "blog",
+        "size": 28
+      },
+      {
+        "text": "exploring",
+        "size": 26
+      },
+      {
+        "text": "agent",
+        "size": 24
+      },
+      {
+        "text": "invoice",
+        "size": 24
+      },
+      {
+        "text": "creation",
+        "size": 24
+      },
+      {
+        "text": "specialist",
+        "size": 23
+      },
+      {
+        "text": "test",
+        "size": 23
+      },
+      {
+        "text": "google",
+        "size": 22
+      },
+      {
+        "text": "package",
+        "size": 22
+      },
+      {
+        "text": "explore",
+        "size": 21
+      },
+      {
+        "text": "using",
+        "size": 21
+      },
+      {
+        "text": "modules",
+        "size": 21
+      },
+      {
+        "text": "ats",
+        "size": 20
+      },
+      {
+        "text": "started",
+        "size": 19
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Adventurer",
+      "stats": {
+        "Execution": 5,
+        "Agility": 5,
+        "Innovation": 5,
+        "Strategy": 5,
+        "Collaboration": 5
+      }
+    }
+  },
+  {
+    "id": "a01al00001S2WnyAAF",
+    "name": "Yeshwanth Chappidi",
+    "totalHours": 2024,
+    "projects": {
+      "Wine Direct": 1984,
+      "Internal / Misc": 40
+    },
+    "activities": {
+      "Development-Coding": 1944,
+      "General": 40,
+      "Development-Admin": 40
+    },
+    "keywords": [],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 400,
+      "Tuesday": 400,
+      "Wednesday": 408,
+      "Thursday": 408,
+      "Friday": 408,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "holiday",
+        "size": 2
+      }
+    ],
+    "achievements": [],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001T5cD7AAJ",
+    "name": "Vijay Verma",
+    "totalHours": 2024,
+    "projects": {
+      "Wine Direct": 1920,
+      "Internal / Misc": 104
+    },
+    "activities": {
+      "Development-Coding": 1784,
+      "Development-Admin": 136,
+      "General": 104
+    },
+    "keywords": [],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 400,
+      "Tuesday": 400,
+      "Wednesday": 408,
+      "Thursday": 416,
+      "Friday": 400,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "leave",
+        "size": 1
+      },
+      {
+        "text": "holi",
+        "size": 1
+      }
+    ],
+    "achievements": [],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001VUKNAAA5",
+    "name": "Rahul Barua",
+    "totalHours": 2000,
+    "projects": {
+      "Wine Direct": 1976,
+      "Internal / Misc": 24
+    },
+    "activities": {
+      "Development-Coding": 1976,
+      "General": 24
+    },
+    "keywords": [],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 400,
+      "Tuesday": 400,
+      "Wednesday": 400,
+      "Thursday": 400,
+      "Friday": 400,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [],
+    "achievements": [],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001XErTyAAL",
+    "name": "Ayan Bhunia",
+    "totalHours": 1802,
+    "projects": {
+      "DBT": 1385.5,
+      "NOSTA": 338.5,
+      "Internal / Misc": 78
+    },
+    "activities": {
+      "Development-Coding": 840.5,
+      "Development-Admin": 346,
+      "Meeting": 300,
+      "Analysis / Exploration": 178,
+      "General": 78,
+      "Collaboration": 38,
+      "Other": 11.5,
+      "Meetings and Planning": 10
+    },
+    "keywords": [
+      "AI",
+      "Nosta",
+      "Flow",
+      "LWC",
+      "Supabase",
+      "Git",
+      "GitHub",
+      "API",
+      "N8n",
+      "Testing",
+      "SOQL",
+      "Apex",
+      "Aura",
+      "Azure",
+      "Node"
+    ],
+    "collab": "Anusha",
+    "dayStats": {
+      "Monday": 359,
+      "Tuesday": 359,
+      "Wednesday": 360,
+      "Thursday": 358.5,
+      "Friday": 354.5,
+      "Saturday": 7,
+      "Sunday": 4
+    },
+    "wordCloud": [
+      {
+        "text": "timesheet",
+        "size": 35
+      },
+      {
+        "text": "data",
+        "size": 25
+      },
+      {
+        "text": "some",
+        "size": 18
+      },
+      {
+        "text": "seeding",
+        "size": 18
+      },
+      {
+        "text": "meeting",
+        "size": 17
+      },
+      {
+        "text": "app",
+        "size": 17
+      },
+      {
+        "text": "issues",
+        "size": 15
+      },
+      {
+        "text": "ats",
+        "size": 15
+      },
+      {
+        "text": "nosta",
+        "size": 14
+      },
+      {
+        "text": "new",
+        "size": 12
+      },
+      {
+        "text": "updated",
+        "size": 11
+      },
+      {
+        "text": "fixed",
+        "size": 10
+      },
+      {
+        "text": "storage",
+        "size": 9
+      },
+      {
+        "text": "lwc",
+        "size": 8
+      },
+      {
+        "text": "requirment",
+        "size": 8
+      },
+      {
+        "text": "version",
+        "size": 7
+      },
+      {
+        "text": "created",
+        "size": 6
+      },
+      {
+        "text": "will",
+        "size": 6
+      },
+      {
+        "text": "able",
+        "size": 6
+      },
+      {
+        "text": "winedirect",
+        "size": 6
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001YARinAAH",
+    "name": "Pranay Narne",
+    "totalHours": 1440,
+    "projects": {
+      "Wine Direct": 1416,
+      "Internal / Misc": 24
+    },
+    "activities": {
+      "Development-Coding": 1408,
+      "General": 24,
+      "Meeting": 8
+    },
+    "keywords": [
+      "Flow"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 288,
+      "Tuesday": 288,
+      "Wednesday": 288,
+      "Thursday": 288,
+      "Friday": 288,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "reservation",
+        "size": 10
+      },
+      {
+        "text": "workflow",
+        "size": 10
+      },
+      {
+        "text": "change",
+        "size": 10
+      }
+    ],
+    "achievements": [],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001hhuIdAAI",
+    "name": "Avinash Bolineni",
+    "totalHours": 1080,
+    "projects": {
+      "Dbt - Timesheet": 1072,
+      "Internal / Misc": 8
+    },
+    "activities": {
+      "Development-Coding": 800,
+      "Development-Admin": 128,
+      "Analysis / Exploration": 40,
+      "Meeting": 24,
+      "Mentoring / Training": 24,
+      "Testing": 24,
+      "Documentation / Review": 16,
+      "Other": 8,
+      "General": 8,
+      "Collaboration": 8
+    },
+    "keywords": [
+      "AI",
+      "Apex",
+      "LWC",
+      "Flow",
+      "Salesforce",
+      "Testing",
+      "Deploy",
+      "Deployment",
+      "Jira",
+      "Confluence",
+      "Integration",
+      "API"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 216,
+      "Tuesday": 216,
+      "Wednesday": 216,
+      "Thursday": 216,
+      "Friday": 216,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "got",
+        "size": 11
+      },
+      {
+        "text": "data",
+        "size": 9
+      },
+      {
+        "text": "apex",
+        "size": 7
+      },
+      {
+        "text": "application",
+        "size": 6
+      },
+      {
+        "text": "cloud",
+        "size": 5
+      },
+      {
+        "text": "custom",
+        "size": 5
+      },
+      {
+        "text": "some",
+        "size": 4
+      },
+      {
+        "text": "created",
+        "size": 4
+      },
+      {
+        "text": "added",
+        "size": 4
+      },
+      {
+        "text": "started",
+        "size": 4
+      },
+      {
+        "text": "logic",
+        "size": 4
+      },
+      {
+        "text": "lwc",
+        "size": 4
+      },
+      {
+        "text": "flows",
+        "size": 4
+      },
+      {
+        "text": "things",
+        "size": 3
+      },
+      {
+        "text": "access",
+        "size": 3
+      },
+      {
+        "text": "using",
+        "size": 3
+      },
+      {
+        "text": "sandbox",
+        "size": 3
+      },
+      {
+        "text": "other",
+        "size": 3
+      },
+      {
+        "text": "objects",
+        "size": 3
+      },
+      {
+        "text": "object",
+        "size": 3
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001hi1vCAAQ",
+    "name": "Saichand Pavuluri",
+    "totalHours": 1080,
+    "projects": {
+      "Dbt - Timesheet": 1080
+    },
+    "activities": {
+      "Development-Admin": 1080
+    },
+    "keywords": [
+      "AI",
+      "Flow",
+      "Deploy",
+      "Apex",
+      "Deployment",
+      "Salesforce",
+      "LWC",
+      "Testing",
+      "Unit Test",
+      "Process Builder",
+      "Aura",
+      "API",
+      "Integration"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 216,
+      "Tuesday": 216,
+      "Wednesday": 216,
+      "Thursday": 216,
+      "Friday": 216,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "timesheet",
+        "size": 21
+      },
+      {
+        "text": "approval",
+        "size": 19
+      },
+      {
+        "text": "created",
+        "size": 18
+      },
+      {
+        "text": "custom",
+        "size": 18
+      },
+      {
+        "text": "data",
+        "size": 18
+      },
+      {
+        "text": "user",
+        "size": 16
+      },
+      {
+        "text": "fields",
+        "size": 14
+      },
+      {
+        "text": "employees",
+        "size": 14
+      },
+      {
+        "text": "timesheets",
+        "size": 13
+      },
+      {
+        "text": "ensured",
+        "size": 12
+      },
+      {
+        "text": "managers",
+        "size": 12
+      },
+      {
+        "text": "project",
+        "size": 11
+      },
+      {
+        "text": "employee",
+        "size": 10
+      },
+      {
+        "text": "manager",
+        "size": 10
+      },
+      {
+        "text": "set",
+        "size": 9
+      },
+      {
+        "text": "time",
+        "size": 9
+      },
+      {
+        "text": "entries",
+        "size": 9
+      },
+      {
+        "text": "hours",
+        "size": 9
+      },
+      {
+        "text": "built",
+        "size": 9
+      },
+      {
+        "text": "lightning",
+        "size": 9
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Adventurer",
+      "stats": {
+        "Execution": 5,
+        "Agility": 5,
+        "Innovation": 5,
+        "Strategy": 5,
+        "Collaboration": 5
+      }
+    }
+  },
+  {
+    "id": "a01al00001hi3SLAAY",
+    "name": "Manoj Ravipati",
+    "totalHours": 1160,
+    "projects": {
+      "Dbt - Timesheet": 1160
+    },
+    "activities": {
+      "Development-Coding": 1160
+    },
+    "keywords": [
+      "Salesforce"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 232,
+      "Tuesday": 232,
+      "Wednesday": 232,
+      "Thursday": 232,
+      "Friday": 232,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "whole",
+        "size": 1
+      },
+      {
+        "text": "been",
+        "size": 1
+      },
+      {
+        "text": "spent",
+        "size": 1
+      },
+      {
+        "text": "learning",
+        "size": 1
+      },
+      {
+        "text": "concepts",
+        "size": 1
+      },
+      {
+        "text": "salesforce",
+        "size": 1
+      },
+      {
+        "text": "administration",
+        "size": 1
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      }
+    ],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001hi5NhAAI",
+    "name": "Krishna chaitanya Koyi",
+    "totalHours": 1120,
+    "projects": {
+      "Dbt - Timesheet": 715,
+      "Internal / Misc": 405
+    },
+    "activities": {
+      "Development-Coding": 715,
+      "General": 405
+    },
+    "keywords": [],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 224,
+      "Tuesday": 224,
+      "Wednesday": 224,
+      "Thursday": 224,
+      "Friday": 224,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [],
+    "achievements": [],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  },
+  {
+    "id": "a01al00001qfTpBAAU",
+    "name": "Rajeet Nair",
+    "totalHours": 496.9,
+    "projects": {
+      "NOSTA": 222,
+      "DBT - AI": 188.4,
+      "DBT": 74.5,
+      "Internal / Misc": 12
+    },
+    "activities": {
+      "Development-Coding": 224.3,
+      "Master Agent": 82,
+      "Travel Expense Calculation Agent": 67,
+      "Meeting": 66.2,
+      "Other": 23.5,
+      "General": 12,
+      "Testing": 7,
+      "Collaboration": 5,
+      "Certification": 4,
+      "Documentation / Review": 2.5,
+      "Development-Admin": 2,
+      "Meetings and Planning": 1.5
+    },
+    "keywords": [
+      "AI",
+      "Nosta",
+      "Flow",
+      "N8n",
+      "Testing",
+      "Supabase",
+      "Deploy",
+      "Integration",
+      "Deployment",
+      "API",
+      "Git",
+      "GitHub",
+      "Node",
+      "SQL",
+      "Salesforce"
+    ],
+    "collab": "None",
+    "dayStats": {
+      "Monday": 97.3,
+      "Tuesday": 99.6,
+      "Wednesday": 99.7,
+      "Thursday": 99.45,
+      "Friday": 100.9,
+      "Saturday": 0,
+      "Sunday": 0
+    },
+    "wordCloud": [
+      {
+        "text": "dbt",
+        "size": 57
+      },
+      {
+        "text": "meeting",
+        "size": 45
+      },
+      {
+        "text": "team",
+        "size": 35
+      },
+      {
+        "text": "nosta",
+        "size": 28
+      },
+      {
+        "text": "new",
+        "size": 27
+      },
+      {
+        "text": "added",
+        "size": 26
+      },
+      {
+        "text": "agent",
+        "size": 23
+      },
+      {
+        "text": "n8n",
+        "size": 22
+      },
+      {
+        "text": "made",
+        "size": 20
+      },
+      {
+        "text": "also",
+        "size": 17
+      },
+      {
+        "text": "workflow",
+        "size": 17
+      },
+      {
+        "text": "optimization",
+        "size": 16
+      },
+      {
+        "text": "warehouse",
+        "size": 15
+      },
+      {
+        "text": "interface",
+        "size": 14
+      },
+      {
+        "text": "additional",
+        "size": 12
+      },
+      {
+        "text": "data",
+        "size": 11
+      },
+      {
+        "text": "logic",
+        "size": 11
+      },
+      {
+        "text": "material",
+        "size": 11
+      },
+      {
+        "text": "dashboard",
+        "size": 10
+      },
+      {
+        "text": "changes",
+        "size": 10
+      }
+    ],
+    "achievements": [
+      {
+        "name": "Firefighter",
+        "icon": "🔥",
+        "desc": "Fixed critical issues"
+      },
+      {
+        "name": "Architect",
+        "icon": "📐",
+        "desc": "Designed systems"
+      },
+      {
+        "name": "Deployer",
+        "icon": "🚀",
+        "desc": "Shipped code to Prod"
+      },
+      {
+        "name": "Scholar",
+        "icon": "🎓",
+        "desc": "Always learning"
+      },
+      {
+        "name": "Communicator",
+        "icon": "📢",
+        "desc": "Meeting master"
+      },
+      {
+        "name": "Integrator",
+        "icon": "🔗",
+        "desc": "Connected systems"
+      }
+    ],
+    "rpg": {
+      "class": "Code Wizard",
+      "stats": {
+        "Execution": 8,
+        "Agility": 7,
+        "Innovation": 10,
+        "Strategy": 6,
+        "Collaboration": 4
+      }
+    }
+  }
+];
+
+    // --- 2. MATRIX RAIN EFFECT ---
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const nums = '0123456789';
+    const alphabet = katakana + latin + nums;
+    const fontSize = 16;
+    const columns = canvas.width/fontSize;
+    const drops = [];
+
+    for(let x = 0; x < columns; x++) drops[x] = 1;
+
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(13, 13, 13, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#0F0';
+        ctx.font = fontSize + 'px monospace';
+
+        for(let i = 0; i < drops.length; i++) {
+            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+            ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+            if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+    setInterval(drawMatrix, 30);
+    
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // --- 3. APP LOGIC ---
+    
+    const userListEl = document.getElementById('user-list');
+    users.forEach(user => {
+        const btn = document.createElement('div');
+        btn.className = 'user-btn';
+        btn.innerHTML = `<div class="user-avatar">${user.name.charAt(0)}</div> <span>${user.name}</span>`;
+        btn.onclick = () => loadUser(user);
+        userListEl.appendChild(btn);
+    });
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots-container');
+    let charts = {}; 
+
+    // Create Dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.onclick = () => showSlide(index);
+        dotsContainer.appendChild(dot);
+    });
+    const dots = document.querySelectorAll('.dot');
+
+    function loadUser(user) {
+        // Slide 1
+        document.getElementById('user-name-display').innerText = user.name;
+
+        // Slide 2: Stats
+        document.getElementById('total-hours').innerText = Math.round(user.totalHours);
+        
+        // Day Chart (Reverted to Line)
+        const dayCtx = document.getElementById('dayChart').getContext('2d');
+        if(charts['day']) charts['day'].destroy();
+        charts['day'] = new Chart(dayCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                datasets: [{
+                    label: 'Hours',
+                    data: [user.dayStats.Monday, user.dayStats.Tuesday, user.dayStats.Wednesday, user.dayStats.Thursday, user.dayStats.Friday],
+                    borderColor: '#00ff41',
+                    backgroundColor: 'rgba(0, 255, 65, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#00ff41',
+                    pointBorderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { 
+                    y: { grid: { color: '#333' }, ticks: { color: '#888' } },
+                    x: { grid: { color: 'transparent' }, ticks: { color: '#888' } }
+                }
+            }
+        });
+
+        // Slide 3: Projects (Reverted to Doughnut)
+        const projCtx = document.getElementById('projectChart').getContext('2d');
+        if(charts['proj']) charts['proj'].destroy();
+        
+        const topProjects = Object.entries(user.projects).slice(0, 5);
+        charts['proj'] = new Chart(projCtx, {
+            type: 'doughnut',
+            data: {
+                labels: topProjects.map(p => p[0]),
+                datasets: [{
+                    data: topProjects.map(p => p[1]),
+                    backgroundColor: [
+                        '#ffb3ba', // Soft Red
+                        '#ffdfba', // Soft Orange
+                        '#ffffba', // Soft Yellow
+                        '#baffc9', // Soft Green
+                        '#bae1ff', // Soft Blue
+                        '#eecbff', // Soft Purple
+                        '#ffd1dc', // Soft Pink
+                        '#c1f0f0', // Mint
+                        '#e6e6fa', // Lavender
+                        '#ffdab9'  // Peach
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { color: '#ccc', font: { size: 10 } } } }
+            }
+        });
+
+        // Slide 4: RPG
+        document.getElementById('rpg-class').innerText = user.rpg.class;
+        const iconMap = { "Code Wizard": "🧙‍♂️", "Grand Strategist": "👑", "Arcane Scholar": "📜", "Bounty Hunter": "🏹", "Artisan": "⚒️", "Adventurer": "⚔️" };
+        document.getElementById('rpg-icon').innerText = iconMap[user.rpg.class] || "⚔️";
+
+        const statsContainer = document.getElementById('rpg-stats-container');
+        statsContainer.innerHTML = '';
+        Object.entries(user.rpg.stats).forEach(([stat, val]) => {
+            statsContainer.innerHTML += `
+                <div class="stat-bar">
+                    <div class="stat-name">${stat}</div>
+                    <div class="stat-track">
+                        <div class="stat-val" style="width: ${val*10}%"></div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Slide 5: Collab & Tech
+        document.getElementById('top-collab').innerText = user.collab;
+        const cloud = document.getElementById('keyword-cloud');
+        cloud.innerHTML = '';
+        user.keywords.forEach(k => {
+            cloud.innerHTML += `<span class="tag">${k}</span>`;
+        });
+        if(user.keywords.length === 0) cloud.innerHTML = '<span style="color:#666">No distinct tech detected.</span>';
+
+        // Slide 6: Dynamic Word Cloud
+        const wordContainer = document.getElementById('word-cloud-container');
+        wordContainer.innerHTML = '';
+
+        // --- VOCABULARY PARAMETERS ---
+        const CLOUD_CONFIG = {
+            maxFontSize: 5,      // Size of the largest word (rem)
+            minFontSize: 0.4,    // Size of the smallest word (rem)
+            animationBaseDelay: 0.5, // Base random multiplier for pop-in delay
+            maxWordsToShow: 20   // Maximum number of words to render
+        };
+
+        const maxVal = user.wordCloud[0] ? user.wordCloud[0].size : 1;
+        
+        // Center-weighted Sort
+        const sortedWords = user.wordCloud.slice(0, CLOUD_CONFIG.maxWordsToShow).sort((a,b) => b.size - a.size);
+        const centerWeighted = [];
+        let left = [];
+        let right = [];
+        sortedWords.forEach((w, i) => {
+            if(i % 2 === 0) right.push(w); 
+            else left.push(w);
+        });
+        const finalWords = [...left.reverse(), ...right];
+
+        finalWords.forEach((w, index) => {
+            const span = document.createElement('span');
+            const size = ((w.size / maxVal) * (CLOUD_CONFIG.maxFontSize - CLOUD_CONFIG.minFontSize)) + CLOUD_CONFIG.minFontSize;
+            span.className = 'word-item';
+            span.innerText = w.text;
+            span.style.fontSize = size + 'rem';
+            
+            // Random delay for organic pop-in
+            span.style.animationDelay = (Math.random() * CLOUD_CONFIG.animationBaseDelay) + 's';
+            
+            wordContainer.appendChild(span);
+        });
+
+        // Slide 7: Achievements
+        const badgesContainer = document.getElementById('badges-container');
+        badgesContainer.innerHTML = '';
+        user.achievements.forEach(a => {
+            badgesContainer.innerHTML += `
+                <div class="badge">
+                    <div class="badge-icon">${a.icon}</div>
+                    <div class="badge-name">${a.name}</div>
+                    <div class="badge-desc">${a.desc}</div>
+                </div>
+            `;
+        });
+        if(user.achievements.length === 0) badgesContainer.innerHTML = '<p style="grid-column: span 3; color: #666">No Trophies Yet</p>';
+
+        // Transition
+        document.getElementById('login-screen').classList.add('hidden');
+        document.getElementById('slide-container').classList.add('active');
+        setTimeout(() => showSlide(0), 200);
+    }
+
+    function showSlide(index) {
+        if(index >= slides.length) return;
+        
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+        
+        dots.forEach(d => d.classList.remove('active'));
+        dots[index].classList.add('active');
+
+        // FX Triggers
+        if(index === 1) document.getElementById('retro-bg').style.display = 'block';
+        else document.getElementById('retro-bg').style.display = 'none';
+
+        if(index === 3) { // Re-animate RPG bars
+            const bars = document.querySelectorAll('.stat-val');
+            bars.forEach(b => {
+                const w = b.style.width; b.style.width = '0%';
+                setTimeout(() => b.style.width = w, 100);
+            });
+        }
+
+        currentSlide = index;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+
+    function resetApp() {
+        document.getElementById('login-screen').classList.remove('hidden');
+        document.getElementById('slide-container').classList.remove('active');
+        setTimeout(() => {
+            slides.forEach(s => s.classList.remove('active'));
+            currentSlide = 0;
+        }, 500);
+    }
+
+</script>
+</body>
+</html>
