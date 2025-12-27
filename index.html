@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025: Year In Code</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <style>
         :root {
             --bg-color: #0d0d0d;
@@ -72,10 +73,39 @@
         .badge-name { font-size: 0.8rem; font-weight: bold; color: #fff; }
         .badge-desc { font-size: 0.6rem; color: #888; margin-top: 2px; }
 
-        .bubble-container { width: 100%; height: 350px; position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 8px; margin-top: 20px; }
-        .bubble { border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid #555; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.7rem; font-weight: bold; transition: 0.3s; animation: floatBubble 3s ease-in-out infinite alternate; }
-        .bubble:hover { background: var(--accent); color: #000; transform: scale(1.2); z-index: 10; }
-        @keyframes floatBubble { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
+        .bubble-container { 
+            width: 100%; 
+            height: 350px; 
+            position: relative; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-content: flex-end; /* ALIGN TO BOTTOM */
+            gap: 8px; 
+            margin-top: 20px; 
+        }
+        .bubble { 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid #555; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #fff; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            /* Initial state for JS animation */
+            opacity: 0;
+            transform: translateY(-500px); 
+        }
+        .bubble:hover { background: var(--accent); color: #000; transform: scale(1.2) !important; z-index: 10; }
+        
+        /* Just Drop: Move from top to natural position (translateY(0)) */
+        @keyframes dropIn {
+            0% { transform: translateY(-600px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
 
         .nav-dots { position: absolute; bottom: 30px; width: 100%; display: flex; justify-content: center; gap: 8px; z-index: 10; }
         .dot { width: 8px; height: 8px; background: #444; border-radius: 50%; cursor: pointer; transition: 0.3s; }
@@ -160,4002 +190,244 @@
     "id": "a01al00000crzp3AAA",
     "name": "Sowjanya",
     "totalHours": 1842.9,
-    "projects": {
-      "DBT": 685.9,
-      "DBT - Admin": 660,
-      "Learning": 297,
-      "Internal / Misc": 133,
-      "English": 67
-    },
-    "activities": {
-      "Other": 648,
-      "Meeting": 527.9,
-      "Development-Admin": 287,
-      "Collaboration": 235,
-      "General": 133,
-      "Testing": 12
-    },
-    "keywords": [
-      "Flow"
-    ],
+    "projects": { "DBT": 685.9, "DBT - Admin": 660, "Learning": 297, "Internal / Misc": 133, "English": 67 },
+    "activities": { "Other": 648, "Meeting": 527.9, "Development-Admin": 287, "Collaboration": 235, "General": 133, "Testing": 12 },
+    "keywords": [ "Flow" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 366.2,
-      "Tuesday": 363.5,
-      "Wednesday": 361.2,
-      "Thursday": 368.5,
-      "Friday": 367.5,
-      "Saturday": 13,
-      "Sunday": 3
-    },
-    "wordCloud": [
-      {
-        "text": "completed",
-        "size": 10
-      },
-      {
-        "text": "record",
-        "size": 9
-      },
-      {
-        "text": "create",
-        "size": 8
-      },
-      {
-        "text": "created",
-        "size": 7
-      },
-      {
-        "text": "validation",
-        "size": 6
-      },
-      {
-        "text": "name",
-        "size": 6
-      },
-      {
-        "text": "rule",
-        "size": 5
-      },
-      {
-        "text": "picklist",
-        "size": 5
-      },
-      {
-        "text": "field",
-        "size": 5
-      },
-      {
-        "text": "when",
-        "size": 5
-      },
-      {
-        "text": "contact",
-        "size": 5
-      },
-      {
-        "text": "account",
-        "size": 5
-      },
-      {
-        "text": "type",
-        "size": 4
-      },
-      {
-        "text": "case",
-        "size": 4
-      },
-      {
-        "text": "value",
-        "size": 4
-      },
-      {
-        "text": "update",
-        "size": 4
-      },
-      {
-        "text": "another",
-        "size": 3
-      },
-      {
-        "text": "closed",
-        "size": 3
-      },
-      {
-        "text": "flow",
-        "size": 3
-      },
-      {
-        "text": "automatically",
-        "size": 3
-      },
-      {
-        "text": "values",
-        "size": 2
-      },
-      {
-        "text": "ensure",
-        "size": 2
-      },
-      {
-        "text": "valid",
-        "size": 2
-      },
-      {
-        "text": "timesheet",
-        "size": 2
-      },
-      {
-        "text": "where",
-        "size": 2
-      },
-      {
-        "text": "first",
-        "size": 2
-      },
-      {
-        "text": "last",
-        "size": 2
-      },
-      {
-        "text": "shouldnt",
-        "size": 2
-      },
-      {
-        "text": "same",
-        "size": 2
-      },
-      {
-        "text": "object",
-        "size": 2
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-02-12",
-        "type": "PTO-Un Planned"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-10",
-        "type": "PTO-Planned"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-09",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-13",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-19",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-20",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-25",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-26",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-12-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-12-01",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-12-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-12-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-12-05",
-        "type": "Permission"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.5",
-      "lateCount": 14,
-      "totalSheets": 50
-    },
-    "rpg": {
-      "class": "Adventurer",
-      "stats": {
-        "Execution": 5,
-        "Agility": 5,
-        "Innovation": 5,
-        "Strategy": 5,
-        "Collaboration": 5
-      }
-    }
+    "dayStats": { "Monday": 366.2, "Tuesday": 363.5, "Wednesday": 361.2, "Thursday": 368.5, "Friday": 367.5, "Saturday": 13, "Sunday": 3 },
+    "wordCloud": [ { "text": "completed", "size": 10 }, { "text": "record", "size": 9 }, { "text": "create", "size": 8 }, { "text": "created", "size": 7 }, { "text": "validation", "size": 6 }, { "text": "name", "size": 6 }, { "text": "rule", "size": 5 }, { "text": "picklist", "size": 5 }, { "text": "field", "size": 5 }, { "text": "when", "size": 5 }, { "text": "contact", "size": 5 }, { "text": "account", "size": 5 }, { "text": "type", "size": 4 }, { "text": "case", "size": 4 }, { "text": "value", "size": 4 }, { "text": "update", "size": 4 }, { "text": "another", "size": 3 }, { "text": "closed", "size": 3 }, { "text": "flow", "size": 3 }, { "text": "automatically", "size": 3 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-02-12", "type": "PTO-Un Planned" }, { "duration": 8, "date": "2025-03-10", "type": "PTO-Planned" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-09", "type": "Permission" }, { "duration": 8, "date": "2025-06-16", "type": "Permission" }, { "duration": 8, "date": "2025-08-13", "type": "Permission" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-22", "type": "Permission" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-11-21", "type": "Permission" }, { "duration": 1, "date": "2025-11-17", "type": "Permission" }, { "duration": 1, "date": "2025-11-18", "type": "Permission" }, { "duration": 1, "date": "2025-11-19", "type": "Permission" }, { "duration": 1, "date": "2025-11-20", "type": "Permission" }, { "duration": 1, "date": "2025-11-24", "type": "Permission" }, { "duration": 1, "date": "2025-11-25", "type": "Permission" }, { "duration": 1, "date": "2025-11-26", "type": "Permission" }, { "duration": 1, "date": "2025-11-27", "type": "Permission" }, { "duration": 1, "date": "2025-11-28", "type": "Permission" }, { "duration": 8, "date": "2025-12-02", "type": "Permission" }, { "duration": 1, "date": "2025-12-01", "type": "Permission" }, { "duration": 1, "date": "2025-12-03", "type": "Permission" }, { "duration": 1, "date": "2025-12-04", "type": "Permission" }, { "duration": 1, "date": "2025-12-05", "type": "Permission" } ],
+    "punctuality": { "avgGap": "4.5", "lateCount": 14, "totalSheets": 50 },
+    "rpg": { "class": "Adventurer", "stats": { "Execution": 5, "Agility": 5, "Innovation": 5, "Strategy": 5, "Collaboration": 5 } }
   },
   {
     "id": "a01al00000dBK9qAAG",
     "name": "Anusha",
     "totalHours": 2039.4,
-    "projects": {
-      "AI": 1128,
-      "DBT": 275.3,
-      "Internal / Misc": 204,
-      "DBT-Recruitment & BD": 161.6,
-      "Learning": 144,
-      "Dbt - Timesheet": 65,
-      "DBT - AI": 37.5,
-      "NOSTA": 13,
-      "Client": 11
-    },
-    "activities": {
-      "Other": 1154.6,
-      "Meeting": 351,
-      "General": 204,
-      "Analysis / Exploration": 121,
-      "Certification": 80,
-      "Development-Admin": 69.5,
-      "Documentation / Review": 26,
-      "Collaboration": 19.3,
-      "Travel Expense Calculation Agent": 7,
-      "Testing": 5,
-      "Meetings and Planning": 2
-    },
-    "keywords": [
-      "AI",
-      "Flow",
-      "N8n",
-      "Testing",
-      "Supabase",
-      "Nosta",
-      "Azure",
-      "API",
-      "Integration",
-      "Node",
-      "Salesforce",
-      "React",
-      "Git",
-      "HTML",
-      "LWC"
-    ],
-    "collabs": [
-      {
-        "name": "Prameela",
-        "count": 1
-      }
-    ],
-    "dayStats": {
-      "Monday": 401.3,
-      "Tuesday": 405.8,
-      "Wednesday": 405.1,
-      "Thursday": 411.3,
-      "Friday": 415.9,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "agent",
-        "size": 62
-      },
-      {
-        "text": "dbt",
-        "size": 61
-      },
-      {
-        "text": "n8n",
-        "size": 59
-      },
-      {
-        "text": "started",
-        "size": 54
-      },
-      {
-        "text": "completed",
-        "size": 48
-      },
-      {
-        "text": "flow",
-        "size": 41
-      },
-      {
-        "text": "data",
-        "size": 41
-      },
-      {
-        "text": "workflow",
-        "size": 38
-      },
-      {
-        "text": "meeting",
-        "size": 36
-      },
-      {
-        "text": "few",
-        "size": 36
-      },
-      {
-        "text": "explored",
-        "size": 33
-      },
-      {
-        "text": "created",
-        "size": 31
-      },
-      {
-        "text": "using",
-        "size": 31
-      },
-      {
-        "text": "creating",
-        "size": 30
-      },
-      {
-        "text": "supabase",
-        "size": 30
-      },
-      {
-        "text": "testing",
-        "size": 29
-      },
-      {
-        "text": "tried",
-        "size": 29
-      },
-      {
-        "text": "specialist",
-        "size": 28
-      },
-      {
-        "text": "agentforce",
-        "size": 28
-      },
-      {
-        "text": "about",
-        "size": 26
-      },
-      {
-        "text": "prompt",
-        "size": 25
-      },
-      {
-        "text": "candidates",
-        "size": 24
-      },
-      {
-        "text": "padma",
-        "size": 24
-      },
-      {
-        "text": "modifying",
-        "size": 24
-      },
-      {
-        "text": "documents",
-        "size": 23
-      },
-      {
-        "text": "explore",
-        "size": 23
-      },
-      {
-        "text": "adding",
-        "size": 22
-      },
-      {
-        "text": "file",
-        "size": 22
-      },
-      {
-        "text": "added",
-        "size": 21
-      },
-      {
-        "text": "table",
-        "size": 21
-      },
-      {
-        "text": "different",
-        "size": 21
-      },
-      {
-        "text": "chat",
-        "size": 21
-      },
-      {
-        "text": "nosta",
-        "size": 21
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-07",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-08",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-09",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-10",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-01",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 4,
-        "date": "2025-04-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-15",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-30",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-01",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-09-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-28",
-        "type": "Permission"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "9.1",
-      "lateCount": 31,
-      "totalSheets": 50
-    },
-    "rpg": {
-      "class": "Adventurer",
-      "stats": {
-        "Execution": 5,
-        "Agility": 5,
-        "Innovation": 5,
-        "Strategy": 5,
-        "Collaboration": 5
-      }
-    }
+    "projects": { "AI": 1128, "DBT": 275.3, "Internal / Misc": 204, "DBT-Recruitment & BD": 161.6, "Learning": 144, "Dbt - Timesheet": 65, "DBT - AI": 37.5, "NOSTA": 13, "Client": 11 },
+    "activities": { "Other": 1154.6, "Meeting": 351, "General": 204, "Analysis / Exploration": 121, "Certification": 80, "Development-Admin": 69.5, "Documentation / Review": 26, "Collaboration": 19.3, "Travel Expense Calculation Agent": 7, "Testing": 5, "Meetings and Planning": 2 },
+    "keywords": [ "AI", "Flow", "N8n", "Testing", "Supabase", "Nosta", "Azure", "API", "Integration", "Node", "Salesforce", "React", "Git", "HTML", "LWC" ],
+    "collabs": [ { "name": "Prameela", "count": 1 } ],
+    "dayStats": { "Monday": 401.3, "Tuesday": 405.8, "Wednesday": 405.1, "Thursday": 411.3, "Friday": 415.9, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "agent", "size": 62 }, { "text": "dbt", "size": 61 }, { "text": "n8n", "size": 59 }, { "text": "started", "size": 54 }, { "text": "completed", "size": 48 }, { "text": "flow", "size": 41 }, { "text": "data", "size": 41 }, { "text": "workflow", "size": 38 }, { "text": "meeting", "size": 36 }, { "text": "explored", "size": 33 }, { "text": "created", "size": 31 }, { "text": "using", "size": 31 }, { "text": "creating", "size": 30 }, { "text": "supabase", "size": 30 }, { "text": "testing", "size": 29 }, { "text": "tried", "size": 29 }, { "text": "specialist", "size": 28 }, { "text": "agentforce", "size": 28 }, { "text": "about", "size": 26 }, { "text": "prompt", "size": 25 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-07", "type": "Sick Leave" }, { "duration": 8, "date": "2025-01-08", "type": "Sick Leave" }, { "duration": 8, "date": "2025-01-09", "type": "Sick Leave" }, { "duration": 8, "date": "2025-01-10", "type": "Sick Leave" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-01", "type": "Sick Leave" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 4, "date": "2025-04-21", "type": "Permission" }, { "duration": 8, "date": "2025-05-15", "type": "Permission" }, { "duration": 8, "date": "2025-05-16", "type": "Permission" }, { "duration": 8, "date": "2025-06-16", "type": "Permission" }, { "duration": 8, "date": "2025-06-06", "type": "Permission" }, { "duration": 8, "date": "2025-06-30", "type": "Permission" }, { "duration": 8, "date": "2025-07-01", "type": "Permission" }, { "duration": 8, "date": "2025-08-05", "type": "Permission" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-09-16", "type": "Permission" }, { "duration": 8, "date": "2025-08-22", "type": "Permission" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" }, { "duration": 8, "date": "2025-11-27", "type": "Permission" }, { "duration": 8, "date": "2025-11-28", "type": "Permission" } ],
+    "punctuality": { "avgGap": "9.1", "lateCount": 31, "totalSheets": 50 },
+    "rpg": { "class": "Adventurer", "stats": { "Execution": 5, "Agility": 5, "Innovation": 5, "Strategy": 5, "Collaboration": 5 } }
   },
   {
     "id": "a01al00000dCxFaAAK",
     "name": "Prameela",
     "totalHours": 1864,
-    "projects": {
-      "DBT": 976,
-      "Client": 371,
-      "Learning": 279.5,
-      "Internal / Misc": 117,
-      "English": 73.5,
-      "Dbt - Timesheet": 39,
-      "Java": 8
-    },
-    "activities": {
-      "Analysis / Exploration": 850,
-      "Meeting": 381,
-      "Collaboration": 183,
-      "General": 117,
-      "Certification": 98.5,
-      "Testing": 85.5,
-      "Documentation / Review": 53,
-      "Development-Admin": 48,
-      "Other": 40,
-      "Development-Coding": 8
-    },
-    "keywords": [
-      "Flow",
-      "AI",
-      "Salesforce",
-      "HTML",
-      "LWC",
-      "API",
-      "Apex",
-      "Deploy",
-      "Testing",
-      "Git",
-      "N8n"
-    ],
+    "projects": { "DBT": 976, "Client": 371, "Learning": 279.5, "Internal / Misc": 117, "English": 73.5, "Dbt - Timesheet": 39, "Java": 8 },
+    "activities": { "Analysis / Exploration": 850, "Meeting": 381, "Collaboration": 183, "General": 117, "Certification": 98.5, "Testing": 85.5, "Documentation / Review": 53, "Development-Admin": 48, "Other": 40, "Development-Coding": 8 },
+    "keywords": [ "Flow", "AI", "Salesforce", "HTML", "LWC", "API", "Apex", "Deploy", "Testing", "Git", "N8n" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 400,
-      "Tuesday": 360,
-      "Wednesday": 384,
-      "Thursday": 360,
-      "Friday": 360,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "explored",
-        "size": 36
-      },
-      {
-        "text": "flow",
-        "size": 36
-      },
-      {
-        "text": "release",
-        "size": 34
-      },
-      {
-        "text": "timesheet",
-        "size": 32
-      },
-      {
-        "text": "client",
-        "size": 28
-      },
-      {
-        "text": "tested",
-        "size": 23
-      },
-      {
-        "text": "prepared",
-        "size": 22
-      },
-      {
-        "text": "dumps",
-        "size": 22
-      },
-      {
-        "text": "started",
-        "size": 20
-      },
-      {
-        "text": "summer",
-        "size": 20
-      },
-      {
-        "text": "document",
-        "size": 20
-      },
-      {
-        "text": "agentforce",
-        "size": 20
-      },
-      {
-        "text": "specialist",
-        "size": 19
-      },
-      {
-        "text": "created",
-        "size": 19
-      },
-      {
-        "text": "modules",
-        "size": 19
-      },
-      {
-        "text": "youtube",
-        "size": 19
-      },
-      {
-        "text": "package",
-        "size": 19
-      },
-      {
-        "text": "features",
-        "size": 18
-      },
-      {
-        "text": "watched",
-        "size": 17
-      },
-      {
-        "text": "creating",
-        "size": 16
-      },
-      {
-        "text": "exploring",
-        "size": 15
-      },
-      {
-        "text": "completed",
-        "size": 15
-      },
-      {
-        "text": "updates",
-        "size": 15
-      },
-      {
-        "text": "salesforce",
-        "size": 14
-      },
-      {
-        "text": "videos",
-        "size": 14
-      },
-      {
-        "text": "shared",
-        "size": 14
-      },
-      {
-        "text": "shakti",
-        "size": 14
-      },
-      {
-        "text": "sales",
-        "size": 12
-      },
-      {
-        "text": "topic",
-        "size": 12
-      },
-      {
-        "text": "update",
-        "size": 11
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-15",
-        "type": "PTO-Un Planned"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-23",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      },
-      {
-        "duration": 3,
-        "date": "2025-10-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-11",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-20",
-        "type": "Permission"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "6.0",
-      "lateCount": 22,
-      "totalSheets": 46
-    },
-    "rpg": {
-      "class": "Adventurer",
-      "stats": {
-        "Execution": 5,
-        "Agility": 5,
-        "Innovation": 5,
-        "Strategy": 5,
-        "Collaboration": 5
-      }
-    }
+    "dayStats": { "Monday": 400, "Tuesday": 360, "Wednesday": 384, "Thursday": 360, "Friday": 360, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "explored", "size": 36 }, { "text": "flow", "size": 36 }, { "text": "release", "size": 34 }, { "text": "timesheet", "size": 32 }, { "text": "client", "size": 28 }, { "text": "tested", "size": 23 }, { "text": "prepared", "size": 22 }, { "text": "dumps", "size": 22 }, { "text": "started", "size": 20 }, { "text": "summer", "size": 20 }, { "text": "document", "size": 20 }, { "text": "agentforce", "size": 20 }, { "text": "specialist", "size": 19 }, { "text": "created", "size": 19 }, { "text": "modules", "size": 19 }, { "text": "youtube", "size": 19 }, { "text": "package", "size": 19 }, { "text": "features", "size": 18 }, { "text": "watched", "size": 17 }, { "text": "creating", "size": 16 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-01-15", "type": "PTO-Un Planned" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-07-10", "type": "Permission" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-23", "type": "Permission" }, { "duration": 8, "date": "2025-10-24", "type": "Permission" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" }, { "duration": 3, "date": "2025-10-16", "type": "Permission" }, { "duration": 8, "date": "2025-11-11", "type": "Sick Leave" }, { "duration": 2, "date": "2025-11-20", "type": "Permission" } ],
+    "punctuality": { "avgGap": "6.0", "lateCount": 22, "totalSheets": 46 },
+    "rpg": { "class": "Adventurer", "stats": { "Execution": 5, "Agility": 5, "Innovation": 5, "Strategy": 5, "Collaboration": 5 } }
   },
   {
     "id": "a01al00000dWONJAA4",
     "name": "Rajitha Dodda",
     "totalHours": 1946,
-    "projects": {
-      "Learning": 1332,
-      "DBT": 290,
-      "Internal / Misc": 273,
-      "English": 51
-    },
-    "activities": {
-      "Development-Coding": 651,
-      "Analysis / Exploration": 613,
-      "General": 273,
-      "Collaboration": 199,
-      "Meeting": 135,
-      "Development-Admin": 75
-    },
-    "keywords": [
-      "Apex",
-      "AI",
-      "Flow",
-      "LWC",
-      "Salesforce",
-      "Integration",
-      "Visualforce",
-      "N8n",
-      "Testing",
-      "Javascript",
-      "Java",
-      "Aura"
-    ],
+    "projects": { "Learning": 1332, "DBT": 290, "Internal / Misc": 273, "English": 51 },
+    "activities": { "Development-Coding": 651, "Analysis / Exploration": 613, "General": 273, "Collaboration": 199, "Meeting": 135, "Development-Admin": 75 },
+    "keywords": [ "Apex", "AI", "Flow", "LWC", "Salesforce", "Integration", "Visualforce", "N8n", "Testing", "Javascript", "Java", "Aura" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 385,
-      "Tuesday": 384,
-      "Wednesday": 392,
-      "Thursday": 392,
-      "Friday": 392,
-      "Saturday": 1,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "completed",
-        "size": 76
-      },
-      {
-        "text": "apex",
-        "size": 75
-      },
-      {
-        "text": "modules",
-        "size": 50
-      },
-      {
-        "text": "opportunity",
-        "size": 34
-      },
-      {
-        "text": "flow",
-        "size": 33
-      },
-      {
-        "text": "agentforce",
-        "size": 32
-      },
-      {
-        "text": "when",
-        "size": 30
-      },
-      {
-        "text": "module",
-        "size": 30
-      },
-      {
-        "text": "class",
-        "size": 27
-      },
-      {
-        "text": "automatically",
-        "size": 24
-      },
-      {
-        "text": "record",
-        "size": 23
-      },
-      {
-        "text": "youtube",
-        "size": 23
-      },
-      {
-        "text": "lwc",
-        "size": 23
-      },
-      {
-        "text": "specialist",
-        "size": 23
-      },
-      {
-        "text": "case",
-        "size": 20
-      },
-      {
-        "text": "watched",
-        "size": 20
-      },
-      {
-        "text": "will",
-        "size": 20
-      },
-      {
-        "text": "email",
-        "size": 18
-      },
-      {
-        "text": "customer",
-        "size": 18
-      },
-      {
-        "text": "shared",
-        "size": 18
-      },
-      {
-        "text": "shakti",
-        "size": 18
-      },
-      {
-        "text": "field",
-        "size": 17
-      },
-      {
-        "text": "create",
-        "size": 17
-      },
-      {
-        "text": "closed",
-        "size": 17
-      },
-      {
-        "text": "account",
-        "size": 17
-      },
-      {
-        "text": "send",
-        "size": 16
-      },
-      {
-        "text": "update",
-        "size": 16
-      },
-      {
-        "text": "continue",
-        "size": 16
-      },
-      {
-        "text": "lightning",
-        "size": 16
-      },
-      {
-        "text": "dumps",
-        "size": 16
-      },
-      {
-        "text": "sales",
-        "size": 15
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-02-24",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-03",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 5,
-        "date": "2025-03-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-03-14",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-19",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-08",
-        "type": "Permission"
-      },
-      {
-        "duration": 4,
-        "date": "2025-06-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-11",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-12",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 2,
-        "date": "2025-06-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-06-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-07-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-24",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-25",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 3,
-        "date": "2025-07-31",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-08-01",
-        "type": "Permission"
-      },
-      {
-        "duration": 5,
-        "date": "2025-08-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-11",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 3,
-        "date": "2025-08-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-08",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 4,
-        "date": "2025-08-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 3,
-        "date": "2025-09-01",
-        "type": "On Duty"
-      },
-      {
-        "duration": 8,
-        "date": "2025-09-05",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 3,
-        "date": "2025-09-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-09-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 4,
-        "date": "2025-10-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-10-08",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-21",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-11-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-09",
-        "type": "Permission"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "11.1",
-      "lateCount": 18,
-      "totalSheets": 48
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 9,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "dayStats": { "Monday": 385, "Tuesday": 384, "Wednesday": 392, "Thursday": 392, "Friday": 392, "Saturday": 1, "Sunday": 0 },
+    "wordCloud": [ { "text": "completed", "size": 76 }, { "text": "apex", "size": 75 }, { "text": "modules", "size": 50 }, { "text": "opportunity", "size": 34 }, { "text": "flow", "size": 33 }, { "text": "agentforce", "size": 32 }, { "text": "when", "size": 30 }, { "text": "module", "size": 30 }, { "text": "class", "size": 27 }, { "text": "automatically", "size": 24 }, { "text": "record", "size": 23 }, { "text": "youtube", "size": 23 }, { "text": "lwc", "size": 23 }, { "text": "specialist", "size": 23 }, { "text": "case", "size": 20 }, { "text": "watched", "size": 20 }, { "text": "will", "size": 20 }, { "text": "email", "size": 18 }, { "text": "customer", "size": 18 }, { "text": "shared", "size": 18 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-02", "type": "Permission" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 3, "date": "2025-01-17", "type": "Permission" }, { "duration": 8, "date": "2025-02-24", "type": "Sick Leave" }, { "duration": 8, "date": "2025-03-03", "type": "Sick Leave" }, { "duration": 5, "date": "2025-03-04", "type": "Permission" }, { "duration": 3, "date": "2025-03-14", "type": "Permission" }, { "duration": 8, "date": "2025-03-19", "type": "Permission" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-05-08", "type": "Permission" }, { "duration": 4, "date": "2025-06-02", "type": "Permission" }, { "duration": 8, "date": "2025-06-11", "type": "Permission" }, { "duration": 8, "date": "2025-06-12", "type": "Sick Leave" }, { "duration": 2, "date": "2025-06-18", "type": "Permission" }, { "duration": 3, "date": "2025-06-24", "type": "Permission" }, { "duration": 8, "date": "2025-07-03", "type": "Permission" }, { "duration": 2, "date": "2025-07-16", "type": "Permission" }, { "duration": 8, "date": "2025-07-24", "type": "Sick Leave" }, { "duration": 8, "date": "2025-07-25", "type": "Sick Leave" }, { "duration": 3, "date": "2025-07-31", "type": "Permission" }, { "duration": 1, "date": "2025-08-01", "type": "Permission" }, { "duration": 5, "date": "2025-08-07", "type": "Permission" }, { "duration": 8, "date": "2025-08-11", "type": "Sick Leave" }, { "duration": 3, "date": "2025-08-05", "type": "Permission" }, { "duration": 8, "date": "2025-08-08", "type": "Sick Leave" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 4, "date": "2025-08-18", "type": "Permission" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 3, "date": "2025-09-01", "type": "On Duty" }, { "duration": 8, "date": "2025-09-05", "type": "Sick Leave" }, { "duration": 3, "date": "2025-09-16", "type": "Permission" }, { "duration": 3, "date": "2025-09-22", "type": "Permission" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 4, "date": "2025-10-06", "type": "Permission" }, { "duration": 2, "date": "2025-10-08", "type": "Permission" }, { "duration": 8, "date": "2025-10-07", "type": "Permission" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" }, { "duration": 8, "date": "2025-10-21", "type": "Sick Leave" }, { "duration": 8, "date": "2025-10-28", "type": "Permission" }, { "duration": 8, "date": "2025-11-07", "type": "Permission" }, { "duration": 1, "date": "2025-11-10", "type": "Permission" }, { "duration": 1, "date": "2025-11-27", "type": "Permission" }, { "duration": 2, "date": "2025-12-09", "type": "Permission" } ],
+    "punctuality": { "avgGap": "11.1", "lateCount": 18, "totalSheets": 48 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 9, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00000dWOaDAAW",
     "name": "Anantha Rajesh",
     "totalHours": 2028.5,
-    "projects": {
-      "DBT": 940.5,
-      "Internal / Misc": 395,
-      "Learning": 375,
-      "AI": 233.5,
-      "English": 84.5
-    },
-    "activities": {
-      "Development-Admin": 618,
-      "General": 395,
-      "Analysis / Exploration": 385,
-      "Collaboration": 293,
-      "Meeting": 266.5,
-      "Testing": 29.5,
-      "Certification": 20.5,
-      "Documentation / Review": 15,
-      "Other": 6
-    },
-    "keywords": [
-      "AI",
-      "Flow",
-      "N8n",
-      "Testing",
-      "HTML",
-      "Salesforce",
-      "API",
-      "Node",
-      "Git",
-      "Apex",
-      "LWC",
-      "Deploy"
-    ],
-    "collabs": [
-      {
-        "name": "Sowjanya",
-        "count": 3
-      },
-      {
-        "name": "Prameela",
-        "count": 3
-      },
-      {
-        "name": "Anusha",
-        "count": 1
-      }
-    ],
-    "dayStats": {
-      "Monday": 401,
-      "Tuesday": 400,
-      "Wednesday": 408,
-      "Thursday": 409,
-      "Friday": 408,
-      "Saturday": 2.5,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "will",
-        "size": 80
-      },
-      {
-        "text": "timesheet",
-        "size": 54
-      },
-      {
-        "text": "continue",
-        "size": 44
-      },
-      {
-        "text": "flow",
-        "size": 33
-      },
-      {
-        "text": "blog",
-        "size": 28
-      },
-      {
-        "text": "exploring",
-        "size": 26
-      },
-      {
-        "text": "agent",
-        "size": 24
-      },
-      {
-        "text": "invoice",
-        "size": 24
-      },
-      {
-        "text": "creation",
-        "size": 24
-      },
-      {
-        "text": "specialist",
-        "size": 23
-      },
-      {
-        "text": "test",
-        "size": 23
-      },
-      {
-        "text": "google",
-        "size": 22
-      },
-      {
-        "text": "package",
-        "size": 22
-      },
-      {
-        "text": "explore",
-        "size": 21
-      },
-      {
-        "text": "using",
-        "size": 21
-      },
-      {
-        "text": "modules",
-        "size": 21
-      },
-      {
-        "text": "started",
-        "size": 19
-      },
-      {
-        "text": "workflow",
-        "size": 19
-      },
-      {
-        "text": "send",
-        "size": 18
-      },
-      {
-        "text": "data",
-        "size": 18
-      },
-      {
-        "text": "email",
-        "size": 16
-      },
-      {
-        "text": "monthly",
-        "size": 16
-      },
-      {
-        "text": "force",
-        "size": 16
-      },
-      {
-        "text": "remaining",
-        "size": 15
-      },
-      {
-        "text": "features",
-        "size": 15
-      },
-      {
-        "text": "testing",
-        "size": 14
-      },
-      {
-        "text": "sales",
-        "size": 13
-      },
-      {
-        "text": "creating",
-        "size": 13
-      },
-      {
-        "text": "sheets",
-        "size": 12
-      },
-      {
-        "text": "telegram",
-        "size": 12
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 2,
-        "date": "2025-01-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-08",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-09",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-15",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-23",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-20",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-01-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-29",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-01-30",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-01-31",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-02-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-02-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-02-12",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-02-14",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-11",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-02-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-13",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-02-19",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-20",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-26",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-25",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-02-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-13",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-11",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-03-12",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-14",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-25",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-20",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-19",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-03-26",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-03-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-14",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-09",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-23",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-25",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-29",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 1,
-        "date": "2025-04-30",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-08",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-09",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-12",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-13",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-14",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-15",
-        "type": "Permission"
-      },
-      {
-        "duration": 1,
-        "date": "2025-05-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-23",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-29",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-30",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-06-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-06-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-06-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-06-23",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-06-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-06-25",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-06-26",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-06-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-07",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-08",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 3,
-        "date": "2025-07-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-07-31",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-08-01",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 2,
-        "date": "2025-09-08",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-09-09",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-09-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-09-11",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-09-12",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-09-16",
-        "type": "Permission"
-      },
-      {
-        "duration": 3,
-        "date": "2025-09-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-22",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-06",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-07",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-14",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-13",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-12",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-11",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-21",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-20",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-19",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-18",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-17",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-24",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-25",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-26",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-27",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-11-28",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-05",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-04",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-03",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-02",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-01",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-08",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-09",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-10",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-11",
-        "type": "Permission"
-      },
-      {
-        "duration": 2,
-        "date": "2025-12-12",
-        "type": "Permission"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 14,
-      "totalSheets": 50
-    },
-    "rpg": {
-      "class": "Adventurer",
-      "stats": {
-        "Execution": 5,
-        "Agility": 5,
-        "Innovation": 5,
-        "Strategy": 5,
-        "Collaboration": 5
-      }
-    }
+    "projects": { "DBT": 940.5, "Internal / Misc": 395, "Learning": 375, "AI": 233.5, "English": 84.5 },
+    "activities": { "Development-Admin": 618, "General": 395, "Analysis / Exploration": 385, "Collaboration": 293, "Meeting": 266.5, "Testing": 29.5, "Certification": 20.5, "Documentation / Review": 15, "Other": 6 },
+    "keywords": [ "AI", "Flow", "N8n", "Testing", "HTML", "Salesforce", "API", "Node", "Git", "Apex", "LWC", "Deploy" ],
+    "collabs": [ { "name": "Sowjanya", "count": 3 }, { "name": "Prameela", "count": 3 }, { "name": "Anusha", "count": 1 } ],
+    "dayStats": { "Monday": 401, "Tuesday": 400, "Wednesday": 408, "Thursday": 409, "Friday": 408, "Saturday": 2.5, "Sunday": 0 },
+    "wordCloud": [ { "text": "will", "size": 80 }, { "text": "timesheet", "size": 54 }, { "text": "continue", "size": 44 }, { "text": "flow", "size": 33 }, { "text": "blog", "size": 28 }, { "text": "exploring", "size": 26 }, { "text": "agent", "size": 24 }, { "text": "invoice", "size": 24 }, { "text": "creation", "size": 24 }, { "text": "specialist", "size": 23 }, { "text": "test", "size": 23 }, { "text": "google", "size": 22 }, { "text": "package", "size": 22 }, { "text": "explore", "size": 21 }, { "text": "using", "size": 21 }, { "text": "modules", "size": 21 }, { "text": "started", "size": 19 }, { "text": "workflow", "size": 19 }, { "text": "send", "size": 18 }, { "text": "data", "size": 18 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 2, "date": "2025-01-03", "type": "Permission" }, { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 3, "date": "2025-01-02", "type": "Permission" }, { "duration": 3, "date": "2025-01-08", "type": "Permission" }, { "duration": 8, "date": "2025-01-10", "type": "Permission" }, { "duration": 2, "date": "2025-01-07", "type": "Permission" }, { "duration": 3, "date": "2025-01-06", "type": "Permission" }, { "duration": 2, "date": "2025-01-09", "type": "Permission" }, { "duration": 2, "date": "2025-01-16", "type": "Permission" }, { "duration": 2, "date": "2025-01-17", "type": "Permission" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 3, "date": "2025-01-15", "type": "Permission" }, { "duration": 2, "date": "2025-01-23", "type": "Permission" }, { "duration": 3, "date": "2025-01-22", "type": "Permission" }, { "duration": 3, "date": "2025-01-27", "type": "Permission" }, { "duration": 3, "date": "2025-01-20", "type": "Permission" }, { "duration": 3, "date": "2025-01-21", "type": "Permission" }, { "duration": 2, "date": "2025-01-24", "type": "Permission" }, { "duration": 2, "date": "2025-01-28", "type": "Permission" }, { "duration": 2, "date": "2025-01-29", "type": "Permission" }, { "duration": 2, "date": "2025-01-30", "type": "Permission" }, { "duration": 1, "date": "2025-01-31", "type": "Permission" }, { "duration": 3, "date": "2025-02-03", "type": "Permission" }, { "duration": 2, "date": "2025-02-06", "type": "Permission" }, { "duration": 2, "date": "2025-02-04", "type": "Permission" }, { "duration": 3, "date": "2025-02-05", "type": "Permission" }, { "duration": 2, "date": "2025-02-07", "type": "Permission" }, { "duration": 3, "date": "2025-02-12", "type": "Permission" }, { "duration": 2, "date": "2025-02-18", "type": "Permission" }, { "duration": 8, "date": "2025-02-14", "type": "Permission" }, { "duration": 2, "date": "2025-02-17", "type": "Permission" }, { "duration": 2, "date": "2025-02-11", "type": "Permission" }, { "duration": 8, "date": "2025-02-10", "type": "Permission" }, { "duration": 2, "date": "2025-02-13", "type": "Permission" }, { "duration": 3, "date": "2025-02-19", "type": "Permission" }, { "duration": 2, "date": "2025-02-20", "type": "Permission" }, { "duration": 2, "date": "2025-02-21", "type": "Permission" }, { "duration": 2, "date": "2025-03-07", "type": "Permission" }, { "duration": 2, "date": "2025-03-10", "type": "Permission" }, { "duration": 2, "date": "2025-02-26", "type": "Permission" }, { "duration": 2, "date": "2025-03-03", "type": "Permission" }, { "duration": 2, "date": "2025-02-25", "type": "Permission" }, { "duration": 2, "date": "2025-02-24", "type": "Permission" }, { "duration": 2, "date": "2025-02-27", "type": "Permission" }, { "duration": 2, "date": "2025-02-28", "type": "Permission" }, { "duration": 1, "date": "2025-03-04", "type": "Permission" }, { "duration": 2, "date": "2025-03-05", "type": "Permission" }, { "duration": 1, "date": "2025-03-06", "type": "Permission" }, { "duration": 8, "date": "2025-03-13", "type": "Sick Leave" }, { "duration": 2, "date": "2025-03-11", "type": "Permission" }, { "duration": 3, "date": "2025-03-12", "type": "Permission" }, { "duration": 2, "date": "2025-03-14", "type": "Permission" }, { "duration": 2, "date": "2025-03-17", "type": "Permission" }, { "duration": 1, "date": "2025-03-25", "type": "Permission" }, { "duration": 1, "date": "2025-03-21", "type": "Permission" }, { "duration": 1, "date": "2025-03-20", "type": "Permission" }, { "duration": 1, "date": "2025-03-18", "type": "Permission" }, { "duration": 2, "date": "2025-03-19", "type": "Permission" }, { "duration": 2, "date": "2025-03-26", "type": "Permission" }, { "duration": 8, "date": "2025-03-28", "type": "Permission" }, { "duration": 1, "date": "2025-03-27", "type": "Permission" }, { "duration": 1, "date": "2025-03-24", "type": "Permission" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 1, "date": "2025-04-10", "type": "Permission" }, { "duration": 1, "date": "2025-04-07", "type": "Permission" }, { "duration": 1, "date": "2025-04-04", "type": "Permission" }, { "duration": 1, "date": "2025-04-02", "type": "Permission" }, { "duration": 1, "date": "2025-04-14", "type": "Permission" }, { "duration": 1, "date": "2025-04-03", "type": "Permission" }, { "duration": 1, "date": "2025-04-09", "type": "Permission" }, { "duration": 1, "date": "2025-04-16", "type": "Permission" }, { "duration": 1, "date": "2025-04-17", "type": "Permission" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 1, "date": "2025-04-21", "type": "Permission" }, { "duration": 1, "date": "2025-04-22", "type": "Permission" }, { "duration": 1, "date": "2025-04-23", "type": "Permission" }, { "duration": 1, "date": "2025-04-24", "type": "Permission" }, { "duration": 1, "date": "2025-04-25", "type": "Permission" }, { "duration": 1, "date": "2025-04-28", "type": "Permission" }, { "duration": 1, "date": "2025-04-29", "type": "Permission" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 1, "date": "2025-04-30", "type": "Permission" }, { "duration": 1, "date": "2025-05-05", "type": "Permission" }, { "duration": 1, "date": "2025-05-06", "type": "Permission" }, { "duration": 1, "date": "2025-05-07", "type": "Permission" }, { "duration": 1, "date": "2025-05-08", "type": "Permission" }, { "duration": 1, "date": "2025-05-09", "type": "Permission" }, { "duration": 1, "date": "2025-05-12", "type": "Permission" }, { "duration": 1, "date": "2025-05-13", "type": "Permission" }, { "duration": 1, "date": "2025-05-14", "type": "Permission" }, { "duration": 1, "date": "2025-05-15", "type": "Permission" }, { "duration": 1, "date": "2025-05-16", "type": "Permission" }, { "duration": 8, "date": "2025-05-23", "type": "Permission" }, { "duration": 8, "date": "2025-05-27", "type": "Permission" }, { "duration": 8, "date": "2025-05-28", "type": "Permission" }, { "duration": 8, "date": "2025-05-29", "type": "Permission" }, { "duration": 8, "date": "2025-05-30", "type": "Permission" }, { "duration": 8, "date": "2025-06-03", "type": "Permission" }, { "duration": 8, "date": "2025-06-04", "type": "Permission" }, { "duration": 8, "date": "2025-06-05", "type": "Permission" }, { "duration": 8, "date": "2025-06-06", "type": "Permission" }, { "duration": 8, "date": "2025-06-02", "type": "Permission" }, { "duration": 3, "date": "2025-06-16", "type": "Permission" }, { "duration": 2, "date": "2025-06-18", "type": "Permission" }, { "duration": 2, "date": "2025-06-23", "type": "Permission" }, { "duration": 3, "date": "2025-06-24", "type": "Permission" }, { "duration": 2, "date": "2025-06-25", "type": "Permission" }, { "duration": 2, "date": "2025-06-26", "type": "Permission" }, { "duration": 2, "date": "2025-06-27", "type": "Permission" }, { "duration": 8, "date": "2025-07-07", "type": "Sick Leave" }, { "duration": 8, "date": "2025-07-08", "type": "Sick Leave" }, { "duration": 3, "date": "2025-07-16", "type": "Permission" }, { "duration": 3, "date": "2025-07-31", "type": "Permission" }, { "duration": 2, "date": "2025-08-01", "type": "Permission" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 2, "date": "2025-09-08", "type": "Permission" }, { "duration": 2, "date": "2025-09-09", "type": "Permission" }, { "duration": 2, "date": "2025-09-10", "type": "Permission" }, { "duration": 2, "date": "2025-09-11", "type": "Permission" }, { "duration": 2, "date": "2025-09-12", "type": "Permission" }, { "duration": 3, "date": "2025-09-16", "type": "Permission" }, { "duration": 3, "date": "2025-09-22", "type": "Permission" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" }, { "duration": 8, "date": "2025-10-21", "type": "Permission" }, { "duration": 8, "date": "2025-10-22", "type": "Permission" }, { "duration": 2, "date": "2025-11-06", "type": "Permission" }, { "duration": 2, "date": "2025-11-05", "type": "Permission" }, { "duration": 2, "date": "2025-11-04", "type": "Permission" }, { "duration": 2, "date": "2025-11-03", "type": "Permission" }, { "duration": 2, "date": "2025-11-07", "type": "Permission" }, { "duration": 2, "date": "2025-11-14", "type": "Permission" }, { "duration": 2, "date": "2025-11-13", "type": "Permission" }, { "duration": 2, "date": "2025-11-12", "type": "Permission" }, { "duration": 2, "date": "2025-11-11", "type": "Permission" }, { "duration": 2, "date": "2025-11-10", "type": "Permission" }, { "duration": 2, "date": "2025-11-21", "type": "Permission" }, { "duration": 2, "date": "2025-11-20", "type": "Permission" }, { "duration": 2, "date": "2025-11-19", "type": "Permission" }, { "duration": 2, "date": "2025-11-18", "type": "Permission" }, { "duration": 2, "date": "2025-11-17", "type": "Permission" }, { "duration": 2, "date": "2025-11-24", "type": "Permission" }, { "duration": 2, "date": "2025-11-25", "type": "Permission" }, { "duration": 2, "date": "2025-11-26", "type": "Permission" }, { "duration": 2, "date": "2025-11-27", "type": "Permission" }, { "duration": 2, "date": "2025-11-28", "type": "Permission" }, { "duration": 2, "date": "2025-12-05", "type": "Permission" }, { "duration": 2, "date": "2025-12-04", "type": "Permission" }, { "duration": 2, "date": "2025-12-03", "type": "Permission" }, { "duration": 2, "date": "2025-12-02", "type": "Permission" }, { "duration": 2, "date": "2025-12-01", "type": "Permission" }, { "duration": 2, "date": "2025-12-08", "type": "Permission" }, { "duration": 2, "date": "2025-12-09", "type": "Permission" }, { "duration": 2, "date": "2025-12-10", "type": "Permission" }, { "duration": 2, "date": "2025-12-11", "type": "Permission" }, { "duration": 2, "date": "2025-12-12", "type": "Permission" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 14, "totalSheets": 50 },
+    "rpg": { "class": "Adventurer", "stats": { "Execution": 5, "Agility": 5, "Innovation": 5, "Strategy": 5, "Collaboration": 5 } }
   },
   {
     "id": "a01al00001S2WnyAAF",
     "name": "Yeshwanth Chappidi",
     "totalHours": 2024,
-    "projects": {
-      "Wine Direct": 1984,
-      "Internal / Misc": 40
-    },
-    "activities": {
-      "Development-Coding": 1944,
-      "General": 40,
-      "Development-Admin": 40
-    },
+    "projects": { "Wine Direct": 1984, "Internal / Misc": 40 },
+    "activities": { "Development-Coding": 1944, "General": 40, "Development-Admin": 40 },
     "keywords": [],
     "collabs": [],
-    "dayStats": {
-      "Monday": 400,
-      "Tuesday": 400,
-      "Wednesday": 408,
-      "Thursday": 408,
-      "Friday": 408,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "holiday",
-        "size": 2
-      }
-    ],
+    "dayStats": { "Monday": 400, "Tuesday": 400, "Wednesday": 408, "Thursday": 408, "Friday": 408, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "holiday", "size": 2 } ],
     "achievements": [],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 16,
-      "totalSheets": 50
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 9,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 16, "totalSheets": 50 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 9, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001T5cD7AAJ",
     "name": "Vijay Verma",
     "totalHours": 2024,
-    "projects": {
-      "Wine Direct": 1920,
-      "Internal / Misc": 104
-    },
-    "activities": {
-      "Development-Coding": 1784,
-      "Development-Admin": 136,
-      "General": 104
-    },
+    "projects": { "Wine Direct": 1920, "Internal / Misc": 104 },
+    "activities": { "Development-Coding": 1784, "Development-Admin": 136, "General": 104 },
     "keywords": [],
     "collabs": [],
-    "dayStats": {
-      "Monday": 400,
-      "Tuesday": 400,
-      "Wednesday": 408,
-      "Thursday": 416,
-      "Friday": 400,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "leave",
-        "size": 1
-      },
-      {
-        "text": "holi",
-        "size": 1
-      }
-    ],
+    "dayStats": { "Monday": 400, "Tuesday": 400, "Wednesday": 408, "Thursday": 416, "Friday": 400, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "leave", "size": 1 }, { "text": "holi", "size": 1 } ],
     "achievements": [],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-07-04",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-06",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-07",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-10",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-11",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-12",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-13",
-        "type": "Sick Leave"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 16,
-      "totalSheets": 50
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-07-04", "type": "Sick Leave" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" }, { "duration": 8, "date": "2025-11-06", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-07", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-10", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-11", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-12", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-13", "type": "Sick Leave" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 16, "totalSheets": 50 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al000001VUKNAAA5",
     "name": "Rahul Barua",
     "totalHours": 2000,
-    "projects": {
-      "Wine Direct": 1976,
-      "Internal / Misc": 24
-    },
-    "activities": {
-      "Development-Coding": 1976,
-      "General": 24
-    },
+    "projects": { "Wine Direct": 1976, "Internal / Misc": 24 },
+    "activities": { "Development-Coding": 1976, "General": 24 },
     "keywords": [],
     "collabs": [],
-    "dayStats": {
-      "Monday": 400,
-      "Tuesday": 400,
-      "Wednesday": 400,
-      "Thursday": 400,
-      "Friday": 400,
-      "Saturday": 0,
-      "Sunday": 0
-    },
+    "dayStats": { "Monday": 400, "Tuesday": 400, "Wednesday": 400, "Thursday": 400, "Friday": 400, "Saturday": 0, "Sunday": 0 },
     "wordCloud": [],
     "achievements": [],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 16,
-      "totalSheets": 50
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 16, "totalSheets": 50 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001XErTyAAL",
     "name": "Ayan Bhunia",
     "totalHours": 1802,
-    "projects": {
-      "DBT": 1385.5,
-      "NOSTA": 338.5,
-      "Internal / Misc": 78
-    },
-    "activities": {
-      "Development-Coding": 840.5,
-      "Development-Admin": 346,
-      "Meeting": 300,
-      "Analysis / Exploration": 178,
-      "General": 78,
-      "Collaboration": 38,
-      "Other": 11.5,
-      "Meetings and Planning": 10
-    },
-    "keywords": [
-      "AI",
-      "Nosta",
-      "Flow",
-      "LWC",
-      "Supabase",
-      "Git",
-      "GitHub",
-      "API",
-      "N8n",
-      "Testing",
-      "SOQL",
-      "Apex",
-      "Aura",
-      "Azure",
-      "Node"
-    ],
-    "collabs": [
-      {
-        "name": "Anusha",
-        "count": 1
-      },
-      {
-        "name": "Prameela",
-        "count": 1
-      }
-    ],
-    "dayStats": {
-      "Monday": 359,
-      "Tuesday": 359,
-      "Wednesday": 360,
-      "Thursday": 358.5,
-      "Friday": 354.5,
-      "Saturday": 7,
-      "Sunday": 4
-    },
-    "wordCloud": [
-      {
-        "text": "timesheet",
-        "size": 35
-      },
-      {
-        "text": "data",
-        "size": 25
-      },
-      {
-        "text": "some",
-        "size": 18
-      },
-      {
-        "text": "seeding",
-        "size": 18
-      },
-      {
-        "text": "meeting",
-        "size": 17
-      },
-      {
-        "text": "app",
-        "size": 17
-      },
-      {
-        "text": "issues",
-        "size": 15
-      },
-      {
-        "text": "ats",
-        "size": 15
-      },
-      {
-        "text": "nosta",
-        "size": 14
-      },
-      {
-        "text": "new",
-        "size": 12
-      },
-      {
-        "text": "updated",
-        "size": 11
-      },
-      {
-        "text": "fixed",
-        "size": 10
-      },
-      {
-        "text": "storage",
-        "size": 9
-      },
-      {
-        "text": "lwc",
-        "size": 8
-      },
-      {
-        "text": "requirment",
-        "size": 8
-      },
-      {
-        "text": "version",
-        "size": 7
-      },
-      {
-        "text": "created",
-        "size": 6
-      },
-      {
-        "text": "will",
-        "size": 6
-      },
-      {
-        "text": "able",
-        "size": 6
-      },
-      {
-        "text": "winedirect",
-        "size": 6
-      },
-      {
-        "text": "worked",
-        "size": 5
-      },
-      {
-        "text": "change",
-        "size": 5
-      },
-      {
-        "text": "application",
-        "size": 5
-      },
-      {
-        "text": "employee",
-        "size": 5
-      },
-      {
-        "text": "table",
-        "size": 5
-      },
-      {
-        "text": "users",
-        "size": 5
-      },
-      {
-        "text": "changes",
-        "size": 5
-      },
-      {
-        "text": "flow",
-        "size": 5
-      },
-      {
-        "text": "supabase",
-        "size": 5
-      },
-      {
-        "text": "test",
-        "size": 5
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-17",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-18",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-19",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-20",
-        "type": "Sick Leave"
-      },
-      {
-        "duration": 8,
-        "date": "2025-11-21",
-        "type": "Sick Leave"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.5",
-      "lateCount": 16,
-      "totalSheets": 46
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "projects": { "DBT": 1385.5, "NOSTA": 338.5, "Internal / Misc": 78 },
+    "activities": { "Development-Coding": 840.5, "Development-Admin": 346, "Meeting": 300, "Analysis / Exploration": 178, "General": 78, "Collaboration": 38, "Other": 11.5, "Meetings and Planning": 10 },
+    "keywords": [ "AI", "Nosta", "Flow", "LWC", "Supabase", "Git", "GitHub", "API", "N8n", "Testing", "SOQL", "Apex", "Aura", "Azure", "Node" ],
+    "collabs": [ { "name": "Anusha", "count": 1 }, { "name": "Prameela", "count": 1 } ],
+    "dayStats": { "Monday": 359, "Tuesday": 359, "Wednesday": 360, "Thursday": 358.5, "Friday": 354.5, "Saturday": 7, "Sunday": 4 },
+    "wordCloud": [ { "text": "timesheet", "size": 35 }, { "text": "data", "size": 25 }, { "text": "some", "size": 18 }, { "text": "seeding", "size": 18 }, { "text": "meeting", "size": 17 }, { "text": "app", "size": 17 }, { "text": "issues", "size": 15 }, { "text": "ats", "size": 15 }, { "text": "nosta", "size": 14 }, { "text": "new", "size": 12 }, { "text": "updated", "size": 11 }, { "text": "fixed", "size": 10 }, { "text": "storage", "size": 9 }, { "text": "lwc", "size": 8 }, { "text": "requirment", "size": 8 }, { "text": "version", "size": 7 }, { "text": "created", "size": 6 }, { "text": "will", "size": 6 }, { "text": "able", "size": 6 }, { "text": "winedirect", "size": 6 }, { "text": "worked", "size": 5 }, { "text": "change", "size": 5 }, { "text": "application", "size": 5 }, { "text": "employee", "size": 5 }, { "text": "table", "size": 5 }, { "text": "users", "size": 5 }, { "text": "changes", "size": 5 }, { "text": "flow", "size": 5 }, { "text": "supabase", "size": 5 }, { "text": "test", "size": 5 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" }, { "duration": 8, "date": "2025-11-17", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-18", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-19", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-20", "type": "Sick Leave" }, { "duration": 8, "date": "2025-11-21", "type": "Sick Leave" } ],
+    "punctuality": { "avgGap": "4.5", "lateCount": 16, "totalSheets": 46 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001YARinAAH",
     "name": "Pranay Narne",
     "totalHours": 1440,
-    "projects": {
-      "Wine Direct": 1416,
-      "Internal / Misc": 24
-    },
-    "activities": {
-      "Development-Coding": 1408,
-      "General": 24,
-      "Meeting": 8
-    },
-    "keywords": [
-      "Flow"
-    ],
+    "projects": { "Wine Direct": 1416, "Internal / Misc": 24 },
+    "activities": { "Development-Coding": 1408, "General": 24, "Meeting": 8 },
+    "keywords": [ "Flow" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 288,
-      "Tuesday": 288,
-      "Wednesday": 288,
-      "Thursday": 288,
-      "Friday": 288,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "reservation",
-        "size": 10
-      },
-      {
-        "text": "workflow",
-        "size": 10
-      },
-      {
-        "text": "change",
-        "size": 10
-      }
-    ],
+    "dayStats": { "Monday": 288, "Tuesday": 288, "Wednesday": 288, "Thursday": 288, "Friday": 288, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "reservation", "size": 10 }, { "text": "workflow", "size": 10 }, { "text": "change", "size": 10 } ],
     "achievements": [],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 12,
-      "totalSheets": 36
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" }, { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 12, "totalSheets": 36 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001hhuIdAAI",
     "name": "Avinash Bolineni",
     "totalHours": 1080,
-    "projects": {
-      "Dbt - Timesheet": 1072,
-      "Internal / Misc": 8
-    },
-    "activities": {
-      "Development-Coding": 800,
-      "Development-Admin": 128,
-      "Analysis / Exploration": 40,
-      "Meeting": 24,
-      "Mentoring / Training": 24,
-      "Testing": 24,
-      "Documentation / Review": 16,
-      "Other": 8,
-      "General": 8,
-      "Collaboration": 8
-    },
-    "keywords": [
-      "AI",
-      "Apex",
-      "LWC",
-      "Flow",
-      "Salesforce",
-      "Testing",
-      "Deploy",
-      "Deployment",
-      "Jira",
-      "Confluence",
-      "Integration",
-      "API"
-    ],
+    "projects": { "Dbt - Timesheet": 1072, "Internal / Misc": 8 },
+    "activities": { "Development-Coding": 800, "Development-Admin": 128, "Analysis / Exploration": 40, "Meeting": 24, "Mentoring / Training": 24, "Testing": 24, "Documentation / Review": 16, "Other": 8, "General": 8, "Collaboration": 8 },
+    "keywords": [ "AI", "Apex", "LWC", "Flow", "Salesforce", "Testing", "Deploy", "Deployment", "Jira", "Confluence", "Integration", "API" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 216,
-      "Tuesday": 216,
-      "Wednesday": 216,
-      "Thursday": 216,
-      "Friday": 216,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "got",
-        "size": 11
-      },
-      {
-        "text": "data",
-        "size": 9
-      },
-      {
-        "text": "apex",
-        "size": 7
-      },
-      {
-        "text": "application",
-        "size": 6
-      },
-      {
-        "text": "cloud",
-        "size": 5
-      },
-      {
-        "text": "custom",
-        "size": 5
-      },
-      {
-        "text": "some",
-        "size": 4
-      },
-      {
-        "text": "created",
-        "size": 4
-      },
-      {
-        "text": "added",
-        "size": 4
-      },
-      {
-        "text": "started",
-        "size": 4
-      },
-      {
-        "text": "logic",
-        "size": 4
-      },
-      {
-        "text": "lwc",
-        "size": 4
-      },
-      {
-        "text": "flows",
-        "size": 4
-      },
-      {
-        "text": "things",
-        "size": 3
-      },
-      {
-        "text": "access",
-        "size": 3
-      },
-      {
-        "text": "using",
-        "size": 3
-      },
-      {
-        "text": "sandbox",
-        "size": 3
-      },
-      {
-        "text": "other",
-        "size": 3
-      },
-      {
-        "text": "objects",
-        "size": 3
-      },
-      {
-        "text": "object",
-        "size": 3
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 9,
-      "totalSheets": 27
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "dayStats": { "Monday": 216, "Tuesday": 216, "Wednesday": 216, "Thursday": 216, "Friday": 216, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "got", "size": 11 }, { "text": "data", "size": 9 }, { "text": "apex", "size": 7 }, { "text": "application", "size": 6 }, { "text": "cloud", "size": 5 }, { "text": "custom", "size": 5 }, { "text": "some", "size": 4 }, { "text": "created", "size": 4 }, { "text": "added", "size": 4 }, { "text": "started", "size": 4 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 9, "totalSheets": 27 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001hi1vCAAQ",
     "name": "Saichand Pavuluri",
     "totalHours": 1080,
-    "projects": {
-      "Dbt - Timesheet": 1080
-    },
-    "activities": {
-      "Development-Admin": 1080
-    },
-    "keywords": [
-      "AI",
-      "Flow",
-      "Deploy",
-      "Apex",
-      "Deployment",
-      "Salesforce",
-      "LWC",
-      "Testing",
-      "Unit Test",
-      "Process Builder",
-      "Aura",
-      "API",
-      "Integration"
-    ],
+    "projects": { "Dbt - Timesheet": 1080 },
+    "activities": { "Development-Admin": 1080 },
+    "keywords": [ "AI", "Flow", "Deploy", "Apex", "Deployment", "Salesforce", "LWC", "Testing", "Unit Test", "Process Builder", "Aura", "API", "Integration" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 216,
-      "Tuesday": 216,
-      "Wednesday": 216,
-      "Thursday": 216,
-      "Friday": 216,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "timesheet",
-        "size": 21
-      },
-      {
-        "text": "approval",
-        "size": 19
-      },
-      {
-        "text": "created",
-        "size": 18
-      },
-      {
-        "text": "custom",
-        "size": 18
-      },
-      {
-        "text": "data",
-        "size": 18
-      },
-      {
-        "text": "user",
-        "size": 16
-      },
-      {
-        "text": "fields",
-        "size": 14
-      },
-      {
-        "text": "employees",
-        "size": 14
-      },
-      {
-        "text": "timesheets",
-        "size": 13
-      },
-      {
-        "text": "ensured",
-        "size": 12
-      },
-      {
-        "text": "managers",
-        "size": 12
-      },
-      {
-        "text": "project",
-        "size": 11
-      },
-      {
-        "text": "employee",
-        "size": 10
-      },
-      {
-        "text": "manager",
-        "size": 10
-      },
-      {
-        "text": "set",
-        "size": 9
-      },
-      {
-        "text": "time",
-        "size": 9
-      },
-      {
-        "text": "entries",
-        "size": 9
-      },
-      {
-        "text": "hours",
-        "size": 9
-      },
-      {
-        "text": "built",
-        "size": 9
-      },
-      {
-        "text": "lightning",
-        "size": 9
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 9,
-      "totalSheets": 27
-    },
-    "rpg": {
-      "class": "Adventurer",
-      "stats": {
-        "Execution": 5,
-        "Agility": 5,
-        "Innovation": 5,
-        "Strategy": 5,
-        "Collaboration": 5
-      }
-    }
+    "dayStats": { "Monday": 216, "Tuesday": 216, "Wednesday": 216, "Thursday": 216, "Friday": 216, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "timesheet", "size": 21 }, { "text": "approval", "size": 19 }, { "text": "created", "size": 18 }, { "text": "custom", "size": 18 }, { "text": "data", "size": 18 }, { "text": "user", "size": 16 }, { "text": "fields", "size": 14 }, { "text": "employees", "size": 14 }, { "text": "timesheets", "size": 13 }, { "text": "ensured", "size": 12 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 9, "totalSheets": 27 },
+    "rpg": { "class": "Adventurer", "stats": { "Execution": 5, "Agility": 5, "Innovation": 5, "Strategy": 5, "Collaboration": 5 } }
   },
   {
     "id": "a01al00001hi3SLAAY",
     "name": "Manoj Ravipati",
     "totalHours": 1160,
-    "projects": {
-      "Dbt - Timesheet": 1160
-    },
-    "activities": {
-      "Development-Coding": 1160
-    },
-    "keywords": [
-      "Salesforce"
-    ],
+    "projects": { "Dbt - Timesheet": 1160 },
+    "activities": { "Development-Coding": 1160 },
+    "keywords": [ "Salesforce" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 232,
-      "Tuesday": 232,
-      "Wednesday": 232,
-      "Thursday": 232,
-      "Friday": 232,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "whole",
-        "size": 1
-      },
-      {
-        "text": "been",
-        "size": 1
-      },
-      {
-        "text": "spent",
-        "size": 1
-      },
-      {
-        "text": "learning",
-        "size": 1
-      },
-      {
-        "text": "concepts",
-        "size": 1
-      },
-      {
-        "text": "salesforce",
-        "size": 1
-      },
-      {
-        "text": "administration",
-        "size": 1
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 10,
-      "totalSheets": 29
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "dayStats": { "Monday": 232, "Tuesday": 232, "Wednesday": 232, "Thursday": 232, "Friday": 232, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "whole", "size": 1 }, { "text": "been", "size": 1 }, { "text": "spent", "size": 1 }, { "text": "learning", "size": 1 }, { "text": "concepts", "size": 1 }, { "text": "salesforce", "size": 1 }, { "text": "administration", "size": 1 } ],
+    "achievements": [ { "name": "Scholar", "icon": "🎓", "desc": "Always learning" } ],
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 10, "totalSheets": 29 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001hi5NhAAI",
     "name": "Krishna chaitanya Koyi",
     "totalHours": 1120,
-    "projects": {
-      "Dbt - Timesheet": 715,
-      "Internal / Misc": 405
-    },
-    "activities": {
-      "Development-Coding": 715,
-      "General": 405
-    },
+    "projects": { "Dbt - Timesheet": 715, "Internal / Misc": 405 },
+    "activities": { "Development-Coding": 715, "General": 405 },
     "keywords": [],
     "collabs": [],
-    "dayStats": {
-      "Monday": 224,
-      "Tuesday": 224,
-      "Wednesday": 224,
-      "Thursday": 224,
-      "Friday": 224,
-      "Saturday": 0,
-      "Sunday": 0
-    },
+    "dayStats": { "Monday": 224, "Tuesday": 224, "Wednesday": 224, "Thursday": 224, "Friday": 224, "Saturday": 0, "Sunday": 0 },
     "wordCloud": [],
     "achievements": [],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-01-01",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-13",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-01-14",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-03-31",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-04-18",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-05-01",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 9,
-      "totalSheets": 28
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "leaves": [ { "duration": 8, "date": "2025-01-01", "type": "Holiday" }, { "duration": 8, "date": "2025-01-13", "type": "Holiday" }, { "duration": 8, "date": "2025-01-14", "type": "Holiday" }, { "duration": 8, "date": "2025-03-31", "type": "Holiday" }, { "duration": 8, "date": "2025-04-18", "type": "Holiday" }, { "duration": 8, "date": "2025-05-01", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 9, "totalSheets": 28 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   },
   {
     "id": "a01al00001qfTpBAAU",
     "name": "Rajeet Nair",
     "totalHours": 496.9,
-    "projects": {
-      "NOSTA": 222,
-      "DBT - AI": 188.4,
-      "DBT": 74.5,
-      "Internal / Misc": 12
-    },
-    "activities": {
-      "Development-Coding": 224.3,
-      "Master Agent": 82,
-      "Travel Expense Calculation Agent": 67,
-      "Meeting": 66.2,
-      "Other": 23.5,
-      "General": 12,
-      "Testing": 7,
-      "Collaboration": 5,
-      "Certification": 4,
-      "Documentation / Review": 2.5,
-      "Development-Admin": 2,
-      "Meetings and Planning": 1.5
-    },
-    "keywords": [
-      "AI",
-      "Nosta",
-      "Flow",
-      "N8n",
-      "Testing",
-      "Supabase",
-      "Deploy",
-      "Integration",
-      "Deployment",
-      "API",
-      "Git",
-      "GitHub",
-      "Node",
-      "SQL",
-      "Salesforce"
-    ],
+    "projects": { "NOSTA": 222, "DBT - AI": 188.4, "DBT": 74.5, "Internal / Misc": 12 },
+    "activities": { "Development-Coding": 224.3, "Master Agent": 82, "Travel Expense Calculation Agent": 67, "Meeting": 66.2, "Other": 23.5, "General": 12, "Testing": 7, "Collaboration": 5, "Certification": 4, "Documentation / Review": 2.5, "Development-Admin": 2, "Meetings and Planning": 1.5 },
+    "keywords": [ "AI", "Nosta", "Flow", "N8n", "Testing", "Supabase", "Deploy", "Integration", "Deployment", "API", "Git", "GitHub", "Node", "SQL", "Salesforce" ],
     "collabs": [],
-    "dayStats": {
-      "Monday": 97.3,
-      "Tuesday": 99.6,
-      "Wednesday": 99.7,
-      "Thursday": 99.45,
-      "Friday": 100.9,
-      "Saturday": 0,
-      "Sunday": 0
-    },
-    "wordCloud": [
-      {
-        "text": "dbt",
-        "size": 57
-      },
-      {
-        "text": "meeting",
-        "size": 45
-      },
-      {
-        "text": "team",
-        "size": 35
-      },
-      {
-        "text": "nosta",
-        "size": 28
-      },
-      {
-        "text": "new",
-        "size": 27
-      },
-      {
-        "text": "added",
-        "size": 26
-      },
-      {
-        "text": "agent",
-        "size": 23
-      },
-      {
-        "text": "n8n",
-        "size": 22
-      },
-      {
-        "text": "made",
-        "size": 20
-      },
-      {
-        "text": "also",
-        "size": 17
-      },
-      {
-        "text": "workflow",
-        "size": 17
-      },
-      {
-        "text": "optimization",
-        "size": 16
-      },
-      {
-        "text": "warehouse",
-        "size": 15
-      },
-      {
-        "text": "interface",
-        "size": 14
-      },
-      {
-        "text": "additional",
-        "size": 12
-      },
-      {
-        "text": "data",
-        "size": 11
-      },
-      {
-        "text": "logic",
-        "size": 11
-      },
-      {
-        "text": "material",
-        "size": 11
-      },
-      {
-        "text": "dashboard",
-        "size": 10
-      },
-      {
-        "text": "changes",
-        "size": 10
-      }
-    ],
-    "achievements": [
-      {
-        "name": "Firefighter",
-        "icon": "🔥",
-        "desc": "Fixed critical issues"
-      },
-      {
-        "name": "Architect",
-        "icon": "📐",
-        "desc": "Designed systems"
-      },
-      {
-        "name": "Deployer",
-        "icon": "🚀",
-        "desc": "Shipped code to Prod"
-      },
-      {
-        "name": "Scholar",
-        "icon": "🎓",
-        "desc": "Always learning"
-      },
-      {
-        "name": "Communicator",
-        "icon": "📢",
-        "desc": "Meeting master"
-      },
-      {
-        "name": "Integrator",
-        "icon": "🔗",
-        "desc": "Connected systems"
-      }
-    ],
-    "leaves": [
-      {
-        "duration": 8,
-        "date": "2025-08-15",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-08-27",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-02",
-        "type": "Holiday"
-      },
-      {
-        "duration": 8,
-        "date": "2025-10-20",
-        "type": "Holiday"
-      }
-    ],
-    "punctuality": {
-      "avgGap": "4.2",
-      "lateCount": 7,
-      "totalSheets": 13
-    },
-    "rpg": {
-      "class": "Code Wizard",
-      "stats": {
-        "Execution": 8,
-        "Agility": 7,
-        "Innovation": 10,
-        "Strategy": 6,
-        "Collaboration": 4
-      }
-    }
+    "dayStats": { "Monday": 97.3, "Tuesday": 99.6, "Wednesday": 99.7, "Thursday": 99.45, "Friday": 100.9, "Saturday": 0, "Sunday": 0 },
+    "wordCloud": [ { "text": "dbt", "size": 57 }, { "text": "meeting", "size": 45 }, { "text": "team", "size": 35 }, { "text": "nosta", "size": 28 }, { "text": "new", "size": 27 }, { "text": "added", "size": 26 }, { "text": "agent", "size": 23 }, { "text": "n8n", "size": 22 }, { "text": "made", "size": 20 }, { "text": "also", "size": 17 }, { "text": "workflow", "size": 17 }, { "text": "optimization", "size": 16 }, { "text": "warehouse", "size": 15 }, { "text": "interface", "size": 14 }, { "text": "additional", "size": 12 }, { "text": "data", "size": 11 }, { "text": "logic", "size": 11 }, { "text": "material", "size": 11 }, { "text": "dashboard", "size": 10 }, { "text": "changes", "size": 10 } ],
+    "achievements": [ { "name": "Firefighter", "icon": "🔥", "desc": "Fixed critical issues" }, { "name": "Architect", "icon": "📐", "desc": "Designed systems" }, { "name": "Deployer", "icon": "🚀", "desc": "Shipped code to Prod" }, { "name": "Scholar", "icon": "🎓", "desc": "Always learning" }, { "name": "Communicator", "icon": "📢", "desc": "Meeting master" }, { "name": "Integrator", "icon": "🔗", "desc": "Connected systems" } ],
+    "leaves": [ { "duration": 8, "date": "2025-08-15", "type": "Holiday" }, { "duration": 8, "date": "2025-08-27", "type": "Holiday" }, { "duration": 8, "date": "2025-10-02", "type": "Holiday" }, { "duration": 8, "date": "2025-10-20", "type": "Holiday" } ],
+    "punctuality": { "avgGap": "4.2", "lateCount": 7, "totalSheets": 13 },
+    "rpg": { "class": "Code Wizard", "stats": { "Execution": 8, "Agility": 7, "Innovation": 10, "Strategy": 6, "Collaboration": 4 } }
   }
 ];
 
-    // --- 2. MATRIX RAIN EFFECT ---
+    // --- MATRIX RAIN ---
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
     const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
     const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const nums = '0123456789';
-    const alphabet = katakana + latin + nums;
+    const alphabet = katakana + latin;
     const fontSize = 16;
     const columns = canvas.width/fontSize;
     const drops = [];
-
     for(let x = 0; x < columns; x++) drops[x] = 1;
-
     function drawMatrix() {
-        ctx.fillStyle = 'rgba(13, 13, 13, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.fillStyle = '#0F0';
-        ctx.font = fontSize + 'px monospace';
-
+        ctx.fillStyle = 'rgba(13, 13, 13, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0F0'; ctx.font = fontSize + 'px monospace';
         for(let i = 0; i < drops.length; i++) {
             const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
             ctx.fillText(text, i*fontSize, drops[i]*fontSize);
@@ -4164,18 +436,12 @@
         }
     }
     setInterval(drawMatrix, 30);
-    
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-    // --- 3. APP LOGIC ---
-    
+    // --- APP LOGIC ---
     const userListEl = document.getElementById('user-list');
     users.forEach(user => {
-        const btn = document.createElement('div');
-        btn.className = 'user-btn';
+        const btn = document.createElement('div'); btn.className = 'user-btn';
         btn.innerHTML = `<div class="user-avatar">${user.name.charAt(0)}</div> <span>${user.name}</span>`;
         btn.onclick = () => loadUser(user);
         userListEl.appendChild(btn);
@@ -4185,228 +451,232 @@
     const slides = document.querySelectorAll('.slide');
     const dotsContainer = document.getElementById('dots-container');
     let charts = {}; 
+    
+    // Physics Globals
+    let chillEngine, chillRender, chillRunner;
+    let currentUserLeaves = [];
 
-    // Create Dots
     slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        dot.onclick = () => showSlide(index);
-        dotsContainer.appendChild(dot);
+        const dot = document.createElement('div'); dot.classList.add('dot');
+        dot.onclick = () => showSlide(index); dotsContainer.appendChild(dot);
     });
     const dots = document.querySelectorAll('.dot');
 
     function loadUser(user) {
-        // Slide 1
         document.getElementById('user-name-display').innerText = user.name;
-
-        // Slide 2: Stats
         document.getElementById('total-hours').innerText = Math.round(user.totalHours);
         
-        // Day Chart (Reverted to Line)
         const dayCtx = document.getElementById('dayChart').getContext('2d');
         if(charts['day']) charts['day'].destroy();
         charts['day'] = new Chart(dayCtx, {
             type: 'line',
             data: {
                 labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                datasets: [{
-                    label: 'Hours',
-                    data: [user.dayStats.Monday, user.dayStats.Tuesday, user.dayStats.Wednesday, user.dayStats.Thursday, user.dayStats.Friday],
-                    borderColor: '#00ff41',
-                    backgroundColor: 'rgba(0, 255, 65, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#00ff41',
-                    pointBorderColor: '#fff'
-                }]
+                datasets: [{ label: 'Hours', data: [user.dayStats.Monday, user.dayStats.Tuesday, user.dayStats.Wednesday, user.dayStats.Thursday, user.dayStats.Friday], borderColor: '#00ff41', backgroundColor: 'rgba(0, 255, 65, 0.2)', fill: true, tension: 0.4 }]
             },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { 
-                    y: { grid: { color: '#333' }, ticks: { color: '#888' } },
-                    x: { grid: { color: 'transparent' }, ticks: { color: '#888' } }
-                }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#333' }, ticks: { color: '#888' } }, x: { grid: { color: 'transparent' }, ticks: { color: '#888' } } } }
         });
 
-        // Slide 3: Projects (Pastel Doughnut)
         const projCtx = document.getElementById('projectChart').getContext('2d');
         if(charts['proj']) charts['proj'].destroy();
-        
         const topProjects = Object.entries(user.projects).slice(0, 5);
         charts['proj'] = new Chart(projCtx, {
             type: 'doughnut',
             data: {
                 labels: topProjects.map(p => p[0]),
-                datasets: [{
-                    data: topProjects.map(p => p[1]),
-                    backgroundColor: [
-                        '#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#bae1ff', 
-                        '#eecbff', '#ffd1dc', '#c1f0f0', '#e6e6fa', '#ffdab9'
-                    ],
-                    borderWidth: 0,
-                    hoverOffset: 10
-                }]
+                datasets: [{ data: topProjects.map(p => p[1]), backgroundColor: ['#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#bae1ff', '#eecbff', '#ffd1dc', '#c1f0f0', '#e6e6fa', '#ffdab9'], borderWidth: 0, hoverOffset: 10 }]
             },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { color: '#ccc', font: { size: 10 } } } }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#ccc', font: { size: 10 } } } } }
         });
 
-        // Slide 4: RPG
         document.getElementById('rpg-class').innerText = user.rpg.class;
         const iconMap = { "Code Wizard": "🧙‍♂️", "Grand Strategist": "👑", "Arcane Scholar": "📜", "Bounty Hunter": "🏹", "Artisan": "⚒️", "Adventurer": "⚔️" };
         document.getElementById('rpg-icon').innerText = iconMap[user.rpg.class] || "⚔️";
-
         const statsContainer = document.getElementById('rpg-stats-container');
         statsContainer.innerHTML = '';
         Object.entries(user.rpg.stats).forEach(([stat, val]) => {
-            statsContainer.innerHTML += `
-                <div class="stat-bar">
-                    <div class="stat-name">${stat}</div>
-                    <div class="stat-track">
-                        <div class="stat-val" style="width: ${val*10}%"></div>
-                    </div>
-                </div>
-            `;
+            statsContainer.innerHTML += `<div class="stat-bar"><div class="stat-name">${stat}</div><div class="stat-track"><div class="stat-val" style="width: ${val*10}%"></div></div></div>`;
         });
 
-        // Slide 5: Collab (Top 3) & Tech
         const allyContainer = document.getElementById('ally-container');
         allyContainer.innerHTML = '';
-        if (user.collabs.length === 0) {
-            allyContainer.innerHTML = '<p style="color:#666">No distinct allies detected.</p>';
-        } else {
-            user.collabs.forEach((ally, idx) => {
-                allyContainer.innerHTML += `
-                    <div class="ally-row">
-                        <span><span class="ally-rank">#${idx+1}</span> ${ally.name}</span>
-                        <span>${ally.count} mentions</span>
-                    </div>
-                `;
-            });
-        }
+        if (user.collabs.length === 0) { allyContainer.innerHTML = '<p style="color:#666">No distinct allies detected.</p>'; } 
+        else { user.collabs.forEach((ally, idx) => { allyContainer.innerHTML += `<div class="ally-row"><span><span class="ally-rank">#${idx+1}</span> ${ally.name}</span><span>${ally.count} mentions</span></div>`; }); }
 
-        const cloud = document.getElementById('keyword-cloud');
-        cloud.innerHTML = '';
-        user.keywords.forEach(k => {
-            cloud.innerHTML += `<span class="tag">${k}</span>`;
-        });
-        if(user.keywords.length === 0) cloud.innerHTML = '<span style="color:#666">No distinct tech detected.</span>';
+        const cloud = document.getElementById('keyword-cloud'); cloud.innerHTML = '';
+        user.keywords.forEach(k => { cloud.innerHTML += `<span class="tag">${k}</span>`; });
 
-        // Slide 6: Dynamic Word Cloud
-        const wordContainer = document.getElementById('word-cloud-container');
-        wordContainer.innerHTML = '';
-
-        // --- VOCABULARY CONFIG ---
-        const CLOUD_CONFIG = {
-            maxFontSize: 5,      
-            minFontSize: 0.4,    
-            animationBaseDelay: 0.5, 
-            maxWordsToShow: 20   
-        };
-
+        const wordContainer = document.getElementById('word-cloud-container'); wordContainer.innerHTML = '';
+        const CLOUD_CONFIG = { maxFontSize: 3, minFontSize: 0.09, animationBaseDelay: 0.5, maxWordsToShow: 10 };
         if (user.wordCloud && user.wordCloud.length > 0) {
             const maxVal = user.wordCloud[0].size;
             const sortedWords = user.wordCloud.slice(0, CLOUD_CONFIG.maxWordsToShow).sort((a,b) => b.size - a.size);
-            let left = [];
-            let right = [];
-            sortedWords.forEach((w, i) => {
-                if(i % 2 === 0) right.push(w); 
-                else left.push(w);
-            });
+            let left = []; let right = [];
+            sortedWords.forEach((w, i) => { if(i % 2 === 0) right.push(w); else left.push(w); });
             const finalWords = [...left.reverse(), ...right];
-
             finalWords.forEach((w, index) => {
-                const span = document.createElement('span');
-                const size = ((w.size / maxVal) * (CLOUD_CONFIG.maxFontSize - CLOUD_CONFIG.minFontSize)) + CLOUD_CONFIG.minFontSize;
-                span.className = 'word-item';
-                span.innerText = w.text;
-                span.style.fontSize = size + 'rem';
+                const span = document.createElement('span'); const size = ((w.size / maxVal) * (CLOUD_CONFIG.maxFontSize - CLOUD_CONFIG.minFontSize)) + CLOUD_CONFIG.minFontSize;
+                span.className = 'word-item'; span.innerText = w.text; span.style.fontSize = size + 'rem';
                 span.style.animationDelay = (Math.random() * CLOUD_CONFIG.animationBaseDelay) + 's';
                 wordContainer.appendChild(span);
             });
         } else { wordContainer.innerHTML = '<p style="color:#666">No distinct vocabulary found.</p>'; }
 
-        // Slide 7: Leaves Bubbles
-        const leafContainer = document.getElementById('leaves-container');
-        leafContainer.innerHTML = '';
-
-        // --- BUBBLE CONFIG ---
-        const BUBBLE_CONFIG = {
-            minBubbleSize: 10,    // Minimum bubble diameter (px)
-            maxBubbleSize: 50,   // Maximum bubble diameter (px)
-            durationScale: 10,    // Multiplier for duration -> size
-            baseAnimSpeed: 2,     // Base speed for floating animation (seconds)
-            randomAnimSpeed: 2    // Random variance for floating animation
-        };
-
-        const leaves = user.leaves || [];
-        if (leaves.length === 0) {
-            leafContainer.innerHTML = '<p style="color:#666">No absences recorded.</p>';
-        } else {
-            leaves.forEach(l => {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.max(BUBBLE_CONFIG.minBubbleSize, Math.min(l.duration * BUBBLE_CONFIG.durationScale, BUBBLE_CONFIG.maxBubbleSize)); 
-                bubble.style.width = size + 'px';
-                bubble.style.height = size + 'px';
-                bubble.innerText = '';
-                bubble.title = `${l.type} on ${l.date}`;
-                bubble.style.animationDuration = (BUBBLE_CONFIG.baseAnimSpeed + Math.random() * BUBBLE_CONFIG.randomAnimSpeed) + 's';
-                leafContainer.appendChild(bubble);
-            });
+        // Store leaves for physics engine
+        currentUserLeaves = user.leaves || [];
+        const leafContainer = document.getElementById('leaves-container'); 
+        leafContainer.innerHTML = ''; // Clear container
+        if (currentUserLeaves.length === 0) { 
+            leafContainer.innerHTML = '<p style="color:#666; width:100%; text-align:center; margin-top: 100px;">No absences recorded.</p>'; 
         }
 
-        // Slide 8: Punctuality
         const punct = user.punctuality;
         document.getElementById('avg-gap').innerText = punct.avgGap;
-        let msg = "On Time Machine.";
-        if (punct.avgGap > 2) msg = "Generally Prompt.";
-        if (punct.avgGap > 5) msg = "Taking it easy.";
+        let msg = punct.avgGap > 5 ? "Taking it easy." : (punct.avgGap > 2 ? "Generally Prompt." : "On Time Machine.");
         document.getElementById('late-msg').innerHTML = `${msg}<br><br>Submitted late (>3 days) <b>${punct.lateCount}</b> times out of ${punct.totalSheets} weeks.`;
 
-        // Slide 9: Achievements
-        const badgesContainer = document.getElementById('badges-container');
-        badgesContainer.innerHTML = '';
-        user.achievements.forEach(a => {
-            badgesContainer.innerHTML += `<div class="badge"><div class="badge-icon">${a.icon}</div><div class="badge-name">${a.name}</div><div class="badge-desc">${a.desc}</div></div>`;
-        });
-        if(user.achievements.length === 0) badgesContainer.innerHTML = '<p style="grid-column: span 3; color: #666">No Trophies Yet</p>';
+        const badgesContainer = document.getElementById('badges-container'); badgesContainer.innerHTML = '';
+        user.achievements.forEach(a => { badgesContainer.innerHTML += `<div class="badge"><div class="badge-icon">${a.icon}</div><div class="badge-name">${a.name}</div><div class="badge-desc">${a.desc}</div></div>`; });
+        if (user.achievements.length === 0) badgesContainer.innerHTML = '<p style="grid-column: span 3; color: #666">No Trophies Yet</p>';
 
         document.getElementById('login-screen').classList.add('hidden');
         document.getElementById('slide-container').classList.add('active');
         setTimeout(() => showSlide(0), 200);
     }
 
+    // --- PHYSICS ENGINE ---
+    function initChillPhysics() {
+        if (currentUserLeaves.length === 0) return;
+        const container = document.getElementById('leaves-container');
+        if (!container) return;
+        
+        // Cleanup existing if any
+        stopChillPhysics();
+        
+        // Dimensions
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        // Module aliases
+        const Engine = Matter.Engine,
+              Render = Matter.Render,
+              Runner = Matter.Runner,
+              Bodies = Matter.Bodies,
+              Composite = Matter.Composite,
+              MouseConstraint = Matter.MouseConstraint,
+              Mouse = Matter.Mouse,
+              World = Matter.World;
+
+        // Create engine
+        chillEngine = Engine.create();
+        const world = chillEngine.world;
+
+        // Create renderer
+        chillRender = Render.create({
+            element: container,
+            engine: chillEngine,
+            options: {
+                width: width,
+                height: height,
+                background: 'transparent',
+                wireframes: false,
+                pixelRatio: window.devicePixelRatio
+            }
+        });
+
+        Render.run(chillRender);
+
+        // Create runner
+        chillRunner = Runner.create();
+        Runner.run(chillRunner, chillEngine);
+
+        // Add walls
+        const walls = [
+            Bodies.rectangle(width / 2, height + 25, width, 50, { isStatic: true, render: { visible: false } }), // Ground
+            Bodies.rectangle(-25, height / 2, 50, height, { isStatic: true, render: { visible: false } }), // Left
+            Bodies.rectangle(width + 25, height / 2, 50, height, { isStatic: true, render: { visible: false } }) // Right
+        ];
+        Composite.add(world, walls);
+
+        // Add leaves as balls
+        const bodies = currentUserLeaves.map(l => {
+            const size = Math.max(15, Math.min(l.duration * 5, 40))*0.5; // Radius
+            return Bodies.circle(
+                Math.random() * (width - 100) + 50, 
+                Math.random() * -500 - 50, // Start above
+                size, 
+                {
+                    restitution: 0.9,
+                    friction: 0.005,
+                    render: {
+                        fillStyle: '#00ff41',
+                        strokeStyle: '#008f11',
+                        lineWidth: 1
+                    }
+                }
+            );
+        });
+
+        Composite.add(world, bodies);
+
+        // Add mouse control
+        const mouse = Mouse.create(chillRender.canvas);
+        const mouseConstraint = MouseConstraint.create(chillEngine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: { visible: false }
+            }
+        });
+        Composite.add(world, mouseConstraint);
+        chillRender.mouse = mouse;
+    }
+
+    function stopChillPhysics() {
+        if (chillRender) {
+            Matter.Render.stop(chillRender);
+            if (chillRender.canvas) chillRender.canvas.remove();
+            chillRender.canvas = null;
+            chillRender.context = null;
+            chillRender.textures = {};
+        }
+        if (chillRunner) {
+            Matter.Runner.stop(chillRunner);
+        }
+        if (chillEngine) {
+            Matter.World.clear(chillEngine.world);
+            Matter.Engine.clear(chillEngine);
+        }
+        chillRender = null;
+        chillRunner = null;
+        chillEngine = null;
+    }
+
     function showSlide(index) {
         if(index >= slides.length) return;
-        slides.forEach(s => s.classList.remove('active'));
-        slides[index].classList.add('active');
-        dots.forEach(d => d.classList.remove('active'));
-        dots[index].classList.add('active');
-        if(index === 1) document.getElementById('retro-bg').style.display = 'block';
-        else document.getElementById('retro-bg').style.display = 'none';
-        if(index === 3) {
-            const bars = document.querySelectorAll('.stat-val');
-            bars.forEach(b => {
-                const w = b.style.width; b.style.width = '0%';
-                setTimeout(() => b.style.width = w, 100);
-            });
+        
+        // Physics cleanup/start
+        if (index === 6) { 
+             // Chill Zone
+             setTimeout(initChillPhysics, 500); // Small delay for transition to finish
+        } else {
+             stopChillPhysics();
         }
+
+        slides.forEach(s => s.classList.remove('active')); slides[index].classList.add('active');
+        dots.forEach(d => d.classList.remove('active')); dots[index].classList.add('active');
+        if(index === 1) document.getElementById('retro-bg').style.display = 'block'; else document.getElementById('retro-bg').style.display = 'none';
+        if(index === 3) { document.querySelectorAll('.stat-val').forEach(b => { const w = b.style.width; b.style.width = '0%'; setTimeout(() => b.style.width = w, 100); }); }
         currentSlide = index;
     }
 
     function nextSlide() { showSlide(currentSlide + 1); }
-
-    function resetApp() {
-        document.getElementById('login-screen').classList.remove('hidden');
-        document.getElementById('slide-container').classList.remove('active');
-        setTimeout(() => { slides.forEach(s => s.classList.remove('active')); currentSlide = 0; }, 500);
+    function resetApp() { 
+        stopChillPhysics();
+        document.getElementById('login-screen').classList.remove('hidden'); 
+        document.getElementById('slide-container').classList.remove('active'); 
+        setTimeout(() => { slides.forEach(s => s.classList.remove('active')); currentSlide = 0; }, 500); 
     }
-
 </script>
 </body>
 </html>
