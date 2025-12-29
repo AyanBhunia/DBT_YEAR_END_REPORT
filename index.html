@@ -703,9 +703,10 @@
     // --- URL PARAMETER HANDLING ---
     window.addEventListener('load', () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const paramName = urlParams.get('name');
+        let paramName = urlParams.get('name');
         
         if (paramName) {
+            paramName = paramName.trim(); // Handle accidental spaces
             if (paramName.toLowerCase() === 'system') {
                 document.getElementById('login-screen').classList.remove('hidden');
             } else {
@@ -714,6 +715,9 @@
                 if (foundUser) {
                     // Slight delay to ensure DOM is ready and transitions work smoothly
                     setTimeout(() => loadUser(foundUser), 100);
+                } else {
+                    // Optional: Handle invalid user (e.g., show error or stay on matrix)
+                    console.warn('User not found:', paramName);
                 }
             }
         }
