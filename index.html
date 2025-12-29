@@ -702,6 +702,20 @@
         document.getElementById('slide-container').classList.remove('active'); 
         setTimeout(() => { slides.forEach(s => s.classList.remove('active')); currentSlide = 0; }, 500); 
     }
+
+    // --- URL PARAMETER HANDLING ---
+    window.addEventListener('load', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramName = urlParams.get('name');
+        if (paramName) {
+            // Case-insensitive search
+            const foundUser = users.find(u => u.name.toLowerCase() === paramName.toLowerCase());
+            if (foundUser) {
+                // Slight delay to ensure DOM is ready and transitions work smoothly
+                setTimeout(() => loadUser(foundUser), 100);
+            }
+        }
+    });
 </script>
 </body>
 </html>

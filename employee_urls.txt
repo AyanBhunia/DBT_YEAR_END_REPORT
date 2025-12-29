@@ -1,0 +1,15 @@
+https://<your-app-url>/?name=Sowjanya
+https://<your-app-url>/?name=Anusha
+https://<your-app-url>/?name=Prameela
+https://<your-app-url>/?name=Rajitha%20Dodda
+https://<your-app-url>/?name=Anantha%20Rajesh
+https://<your-app-url>/?name=Yeshwanth%20Chappidi
+https://<your-app-url>/?name=Vijay%20Verma
+https://<your-app-url>/?name=Rahul%20Barua
+https://<your-app-url>/?name=Ayan%20Bhunia
+https://<your-app-url>/?name=Pranay%20Narne
+https://<your-app-url>/?name=Avinash%20Bolineni
+https://<your-app-url>/?name=Saichand%20Pavuluri
+https://<your-app-url>/?name=Manoj%20Ravipati
+https://<your-app-url>/?name=Krishna%20chaitanya%20Koyi
+https://<your-app-url>/?name=Rajeet%20Nair
