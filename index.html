@@ -132,7 +132,7 @@
 <div class="retro-grid" id="retro-bg"></div>
 
 <div class="app-container">
-    <div class="screen" id="login-screen">
+    <div class="screen hidden" id="login-screen">
         <div class="login-content">
             <h1>SYSTEM ACCESS</h1>
             <p>Select User Profile</p>
@@ -141,7 +141,7 @@
     </div>
 
     <div class="slide-container" id="slide-container">
-        <button class="btn-back" onclick="resetApp()">&#8592;</button>
+        
         <div class="nav-arrows">
             <button class="arrow-btn" onclick="prevSlide()">&#8592;</button>
             <button class="arrow-btn" onclick="nextSlide()">&#8594;</button>
@@ -697,22 +697,24 @@
     }
 
     function resetApp() { 
-        stopChillPhysics();
-        document.getElementById('login-screen').classList.remove('hidden'); 
-        document.getElementById('slide-container').classList.remove('active'); 
-        setTimeout(() => { slides.forEach(s => s.classList.remove('active')); currentSlide = 0; }, 500); 
+        window.location.reload();
     }
 
     // --- URL PARAMETER HANDLING ---
     window.addEventListener('load', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const paramName = urlParams.get('name');
+        
         if (paramName) {
-            // Case-insensitive search
-            const foundUser = users.find(u => u.name.toLowerCase() === paramName.toLowerCase());
-            if (foundUser) {
-                // Slight delay to ensure DOM is ready and transitions work smoothly
-                setTimeout(() => loadUser(foundUser), 100);
+            if (paramName.toLowerCase() === 'system') {
+                document.getElementById('login-screen').classList.remove('hidden');
+            } else {
+                // Case-insensitive search for user
+                const foundUser = users.find(u => u.name.toLowerCase() === paramName.toLowerCase());
+                if (foundUser) {
+                    // Slight delay to ensure DOM is ready and transitions work smoothly
+                    setTimeout(() => loadUser(foundUser), 100);
+                }
             }
         }
     });
