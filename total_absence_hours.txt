@@ -1,0 +1,22 @@
+Employee Total Absence Hours (2025)
+--------------------------------------
+Anantha Rajesh: 403
+Anila: 42.5
+Anusha: 212
+Aswitha Basam: 8
+Avinash Bolineni: 8
+Ayan Bhunia: 118
+Keshav Rana: 117
+Krishna chaitanya Koyi: 405
+Muthu Arasu: 8
+Padma Rao: 48
+Prameela: 125
+Pranay Narne: 24
+Rahul Barua: 24
+Rajeet Nair: 12
+Rajitha Dodda: 297
+Sathish Mattaparti: 56
+Seshadri Kudupudi: 8
+Sowjanya: 149
+Vijay Verma: 104
+Yeshwanth Chappidi: 40

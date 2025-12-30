@@ -3959,6 +3959,37 @@
         u.totalLeaveHours = leaveData[u.name] || 0;
     });
 
+    // --- PATCH: Update Work Hours Data ---
+    const workHoursData = {
+        "Anantha Rajesh": 1665.5,
+        "Anila": 157.5,
+        "Anusha": 1867.4,
+        "Aswitha Basam": 272,
+        "Avinash Bolineni": 1072,
+        "Ayan Bhunia": 1684,
+        "Keshav Rana": 448,
+        "Krishna chaitanya Koyi": 715,
+        "Manoj Ravipati": 1160,
+        "Muthu Arasu": 534.4,
+        "Padma Rao": 405,
+        "Prameela": 1788,
+        "Pranay Narne": 1416,
+        "Rahul Barua": 2048,
+        "Rajeet Nair": 484.95,
+        "Rajitha Dodda": 1729,
+        "Saichand Pavuluri": 1080,
+        "Sathish Mattaparti": 1168,
+        "Seshadri Kudupudi": 536,
+        "Sowjanya": 1733.9,
+        "Vijay Verma": 1920
+    };
+
+    users.forEach(u => {
+        if (workHoursData[u.name] !== undefined) {
+            u.totalHours = workHoursData[u.name];
+        }
+    });
+
     // --- MATRIX RAIN ---
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
