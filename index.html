@@ -3955,13 +3955,8 @@
     };
 
     users.forEach(u => {
-        if (leaveData[u.name] !== undefined) {
-            u.totalLeaveHours = leaveData[u.name];
-        } else {
-            // Default to existing leaves calculation if not in list, or 0
-            const existingTotal = (u.leaves || []).reduce((acc, l) => acc + (l.duration || 0), 0);
-            u.totalLeaveHours = existingTotal; 
-        }
+        // STRICT: Use only the provided leaveData
+        u.totalLeaveHours = leaveData[u.name] || 0;
     });
 
     // --- MATRIX RAIN ---
