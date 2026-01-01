@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year-End Achievement Report</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f4f6f8; /* Light gray background for the email client view */
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        /* Container */
+        .email-wrapper {
+            width: 100%;
+            background-color: #f4f6f8;
+            padding: 40px 0;
+        }
+        
+        .email-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .email-header {
+            background-color: #2c3e50;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .email-header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Body */
+        .email-body {
+            padding: 40px 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* Button */
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #3498db;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* Footer / Note */
+        .email-footer {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            border-top: 1px solid #eeeeee;
+            font-size: 13px;
+            color: #7f8c8d;
+            text-align: center;
+        }
+
+        .note-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-content {
+                width: 100% !important;
+                border-radius: 0 !important;
+            }
+            .email-body {
+                padding: 20px !important;
+            }
+            .email-wrapper {
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <div class="email-content">
+            <!-- Header -->
+            <div class="email-header">
+                <h1>2025 Year-End Achievement Report</h1>
+            </div>
+
+            <!-- Main Content -->
+            <div class="email-body">
+                <p class="greeting">Hi {{ $json.Name }},</p>
+                
+                <p>As we wrap up the year, we've put together a special "Year-End Achievement Report" just for you. This report highlights your contributions and milestones throughout 2025.</p>
+                
+                <p>It's been a great year, and we wanted to share a fun summary of what you've accomplished.</p>
+
+                <div class="button-container">
+                    <a href="{{ $json.url }}" class="cta-button">View My Report</a>
+                </div>
+
+                <p>Happy Holidays!</p>
+                
+                <p>Best regards,<br>
+                <strong>Digital Biz Tech Team</strong></p>
+
+                <div class="note-box">
+                    <strong>Important Note:</strong> This report was generated using AI based on internal system data. While we strive for accuracy, please view this as a fun summary rather than an official performance audit.
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="email-footer">
+                &copy; 2025 Digital Biz Tech. All rights reserved.<br>
+                This is an automated message.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
